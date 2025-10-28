@@ -3,76 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио | Специалист по автоматизации</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <title>Портфолио - Специалист по автоматизации</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.6; color: #0f172a; background: #fff; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #fff; }
         body.dark { background: #0f172a; color: #e2e8f0; }
-        body.dark section { background: #1e293b; }
-        body.dark .card { background: #1e293b; border-color: #334155; }
-        
-        header { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        header { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 1rem; position: sticky; top: 0; z-index: 1000; }
         .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.4rem; font-weight: 600; }
         nav { display: flex; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
         nav a:hover { opacity: 0.8; }
-        .theme-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 36px; height: 36px; border-radius: 6px; cursor: pointer; }
-        
+        .theme-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 36px; height: 36px; border-radius: 6px; cursor: pointer; }
         .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 5rem 2rem; text-align: center; }
         .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 700; }
         .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 4rem 0; }
         .light-bg { background: #f8fafc; }
         body.dark .light-bg { background: #1e293b; }
-        h2 { font-size: 2rem; margin-bottom: 2rem; color: #0f172a; font-weight: 700; text-align: center; }
-        body.dark h2 { color: #f1f5f9; }
-        
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .card { background: white; border-radius: 8px; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
+        .card { background: white; border-radius: 8px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        body.dark .card { background: #1e293b; border-color: #334155; }
         .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
         .card-header { padding: 1.5rem; border-bottom: 1px solid #e2e8f0; }
-        .card-header h3 { font-size: 1.3rem; color: #2563eb; margin-bottom: 0.5rem; font-weight: 600; }
+        body.dark .card-header { border-color: #334155; }
+        .card-header h3 { font-size: 1.3rem; color: #2563eb; margin-bottom: 0.5rem; }
         body.dark .card-header h3 { color: #60a5fa; }
-        .card-tech { font-size: 0.875rem; color: #64748b; font-weight: 500; }
+        .card-tech { font-size: 0.875rem; color: #64748b; }
         .card-body { padding: 1.5rem; }
-        .card-desc { color: #475569; margin-bottom: 1.5rem; line-height: 1.7; }
+        .card-desc { color: #475569; margin-bottom: 1.5rem; }
         body.dark .card-desc { color: #cbd5e1; }
-        
         .features { list-style: none; margin: 1.5rem 0; }
         .features li { padding: 0.4rem 0 0.4rem 1.2rem; position: relative; color: #475569; font-size: 0.95rem; }
         .features li::before { content: '•'; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
         .result { background: #f0fdf4; border-left: 3px solid #059669; padding: 0.875rem 1rem; margin-top: 1.5rem; border-radius: 4px; font-size: 0.9rem; color: #166534; font-weight: 500; }
         body.dark .result { background: rgba(5,150,105,0.1); color: #86efac; }
-        
         .code-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
         body.dark .code-section { border-color: #334155; }
-        .code-section h4 { font-size: 1rem; margin-bottom: 1rem; color: #0f172a; font-weight: 600; }
-        body.dark .code-section h4 { color: #f1f5f9; }
-        .code-preview { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 1px solid #334155; }
-        .code-preview code { font-family: 'Courier New', monospace; }
-        .btn-copy { background: #059669; color: white; padding: 0.625rem 1.125rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 500; font-size: 0.875rem; transition: 0.2s; }
+        .code-preview { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; max-height: 400px; overflow-y: auto; font-family: monospace; }
+        .btn-copy { background: #059669; color: white; padding: 0.6rem 1.1rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 500; font-size: 0.875rem; }
         .btn-copy:hover { background: #047857; }
-        .code-meta { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; font-size: 0.875rem; color: #64748b; }
-        body.dark .code-meta { border-color: #334155; }
-        
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; }
         .contact-item { padding: 1.5rem; background: white; border-radius: 6px; border: 1px solid #e2e8f0; text-align: center; }
         body.dark .contact-item { background: #1e293b; border-color: #334155; }
         .contact-item strong { display: block; margin-bottom: 0.5rem; }
         .contact-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
-        
         footer { background: #0f172a; color: #94a3b8; padding: 2rem 0; text-align: center; margin-top: 4rem; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            h2 { font-size: 1.6rem; }
-            .projects { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .projects { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -96,59 +75,34 @@
 
     <section id="projects" class="light-bg">
         <div class="container">
-            <h2>Избранные проекты</h2>
-            
+            <h2>Проекты с исходным кодом</h2>
             <div class="projects">
                 
                 <div class="card">
                     <div class="card-header">
                         <h3>Telegram бот для продаж</h3>
-                        <div class="card-tech">Python • Telebot • JSON • Logging</div>
+                        <div class="card-tech">Python • Telebot • JSON</div>
                     </div>
                     <div class="card-body">
-                        <p class="card-desc">Полная система маркетплейса цифровых товаров с обработкой заказов и промокодами.</p>
+                        <p class="card-desc">Система маркетплейса цифровых товаров с обработкой заказов и промокодами.</p>
                         <ul class="features">
-                            <li>Каталог товаров с ценами</li>
+                            <li>Каталог товаров</li>
                             <li>Обработка заказов</li>
-                            <li>Управление промокодами</li>
-                            <li>Логирование и обработка ошибок</li>
+                            <li>Промокоды</li>
+                            <li>Логирование</li>
                         </ul>
-                        <div class="result">Результат: 100% автоматизация обработки</div>
-                        
+                        <div class="result">100% автоматизация обработки</div>
                         <div class="code-section">
-                            <h4>Полный исходный код</h4>
-                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
-import telebot
+                            <div class="code-preview">import telebot
 from telebot import types
-import json, os, logging
-from datetime import datetime
+import json, os
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-BOT_TOKEN = "YOUR_BOT_TOKEN"
-bot = telebot.TeleBot(BOT_TOKEN)
-
-def load_data(f):
-    if os.path.exists(f):
-        with open(f, 'r', encoding='utf-8') as file:
-            return json.load(file)
-    return {}
-
-def save_data(f, d):
-    with open(f, 'w', encoding='utf-8') as file:
-        json.dump(d, file, ensure_ascii=False, indent=4)
-
+bot = telebot.TeleBot("YOUR_TOKEN")
 products = {"p1": {"name": "Курс Python", "price": 500}}
-users = load_data("users.json")
+users = {}
 
 @bot.message_handler(commands=['start'])
 def start(msg):
-    uid = str(msg.chat.id)
-    if uid not in users:
-        users[uid] = {"name": msg.from_user.first_name, "purchases": []}
-        save_data("users.json", users)
-    
     markup = types.ReplyKeyboardMarkup()
     markup.add("Магазин", "Заказы")
     bot.send_message(msg.chat.id, "Добро пожаловать!", reply_markup=markup)
@@ -160,85 +114,52 @@ def shop(msg):
         markup.add(types.InlineKeyboardButton(f"{p['name']} - {p['price']}₽", callback_data=f"buy_{pid}"))
     bot.send_message(msg.chat.id, "Товары:", reply_markup=markup)
 
-@bot.callback_query_handler(func=lambda c: c.data.startswith("buy_"))
-def buy(call):
-    pid = call.data.split("_")[1]
-    product = products[pid]
-    uid = str(call.from_user.id)
-    users[uid]["purchases"].append({"product": product["name"], "price": product["price"]})
-    save_data("users.json", users)
-    bot.send_message(call.message.chat.id, f"Куплено: {product['name']}")
-
-bot.infinity_polling()</code></div>
+bot.infinity_polling()</div>
                             <button class="btn-copy" onclick="copyCode(0)">Копировать</button>
-                            <div class="code-meta"><strong>Установка:</strong> pip install pytelegrambotapi</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Монитор цен маркетплейсов</h3>
+                        <h3>Монитор цен</h3>
                         <div class="card-tech">Python • BeautifulSoup • SQLite</div>
                     </div>
                     <div class="card-body">
-                        <p class="card-desc">Система мониторинга цен в реальном времени с автоматическими уведомлениями.</p>
+                        <p class="card-desc">Система мониторинга цен с автоматическими уведомлениями.</p>
                         <ul class="features">
-                            <li>Парсинг цен с сайтов</li>
-                            <li>SQLite база данных</li>
-                            <li>Система алертов</li>
-                            <li>Статистика изменений</li>
+                            <li>Парсинг цен</li>
+                            <li>SQLite база</li>
+                            <li>Алерты</li>
+                            <li>Статистика</li>
                         </ul>
-                        <div class="result">Результат: Экономия 50 часов/месяц</div>
-                        
+                        <div class="result">Экономия 50 часов/месяц</div>
                         <div class="code-section">
-                            <h4>Полный исходный код</h4>
-                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
-import requests, sqlite3, time, logging
+                            <div class="code-preview">import requests, sqlite3, time
 from bs4 import BeautifulSoup
-from datetime import datetime
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+conn = sqlite3.connect('prices.db')
+c = conn.cursor()
+c.execute('''CREATE TABLE IF NOT EXISTS prices
+             (id INTEGER PRIMARY KEY, product TEXT, price REAL, timestamp TEXT)''')
 
-def init_db():
-    conn = sqlite3.connect('prices.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS prices
-                 (id INTEGER PRIMARY KEY, product TEXT, price REAL, timestamp TEXT)''')
+def parse(url):
+    r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+    soup = BeautifulSoup(r.content, 'html.parser')
+    products = {}
+    for item in soup.find_all('div', class_='product'):
+        name = item.find('h2').text.strip()
+        price = float(item.find('span', class_='price').text.replace('₽',''))
+        products[name] = price
+    return products
+
+while True:
+    prices = parse("https://example.com")
+    for name, price in prices.items():
+        c.execute("INSERT INTO prices VALUES (NULL, ?, ?, datetime('now'))", (name, price))
     conn.commit()
-    return conn
-
-def parse_prices(url):
-    try:
-        r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
-        soup = BeautifulSoup(r.content, 'html.parser')
-        products = {}
-        for item in soup.find_all('div', class_='product'):
-            name = item.find('h2').text.strip()
-            price = float(item.find('span', class_='price').text.replace('₽','').strip())
-            products[name] = price
-        return products
-    except Exception as e:
-        logger.error(f"Ошибка: {e}")
-        return None
-
-def monitor():
-    conn = init_db()
-    while True:
-        prices = parse_prices("https://example.com")
-        if prices:
-            c = conn.cursor()
-            for name, price in prices.items():
-                c.execute("INSERT INTO prices (product, price, timestamp) VALUES (?, ?, ?)",
-                         (name, price, datetime.now().isoformat()))
-                logger.info(f"{name}: {price}₽")
-            conn.commit()
-        time.sleep(300)
-
-monitor()</code></div>
+    time.sleep(300)</div>
                             <button class="btn-copy" onclick="copyCode(1)">Копировать</button>
-                            <div class="code-meta"><strong>Установка:</strong> pip install requests beautifulsoup4</div>
                         </div>
                     </div>
                 </div>
@@ -246,14 +167,189 @@ monitor()</code></div>
                 <div class="card">
                     <div class="card-header">
                         <h3>CS2 Marketplace бот</h3>
-                        <div class="card-tech">Python • Steam API • Email</div>
+                        <div class="card-tech">Python • Steam API</div>
                     </div>
                     <div class="card-body">
-                        <p class="card-desc">Автоматизация торговли на маркетплейсе CS2 с анализом прибыльности.</p>
+                        <p class="card-desc">Автоматизация торговли на маркетплейсе CS2.</p>
                         <ul class="features">
-                            <li>Steam API интеграция</li>
+                            <li>Steam API</li>
                             <li>Парсинг инвентаря</li>
-                            <li>Расчёт прибыльности</li>
                             <li>Email отчёты</li>
                         </ul>
-                        <div class="result">Результат: +25% прибыли</div>
+                        <div class="result">+25% прибыли</div>
+                        <div class="code-section">
+                            <div class="code-preview">import requests, smtplib, time
+from email.mime.text import MIMEText
+
+API_KEY = "YOUR_STEAM_API_KEY"
+
+def get_inventory(user_id):
+    url = f"https://api.steampowered.com/IEconItems_730/GetUserInventory/v1"
+    r = requests.get(url, params={"key": API_KEY, "steamid": user_id})
+    data = r.json()
+    if data.get('result', {}).get('success'):
+        return data['result'].get('items', [])
+    return []
+
+def send_email(subject, body):
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    server = smtplib.SMTP('smtp.yandex.ru', 587)
+    server.starttls()
+    server.login("email@example.com", "password")
+    server.send_message(msg)
+    server.quit()
+
+while True:
+    items = get_inventory("YOUR_STEAM_ID")
+    send_email("CS2 Bot", f"Найдено {len(items)} предметов")
+    time.sleep(60)</div>
+                            <button class="btn-copy" onclick="copyCode(2)">Копировать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Hackintosh EFI бэкап</h3>
+                        <div class="card-tech">Python • Ryzen 7 5700X3D</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Скрипт для автоматизации бэкапов EFI.</p>
+                        <ul class="features">
+                            <li>Автоматический бэкап</li>
+                            <li>Очистка старых</li>
+                            <li>Восстановление</li>
+                        </ul>
+                        <div class="result">Полностью рабочая macOS на AMD</div>
+                        <div class="code-section">
+                            <div class="code-preview">import os, shutil
+from datetime import datetime
+
+EFI_DIR = r'E:\EFI'
+BACKUP_DIR = r'E:\EFI_BACKUPS'
+
+def backup_efi():
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    today = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    dest = os.path.join(BACKUP_DIR, f'EFI_{today}')
+    shutil.copytree(EFI_DIR, dest)
+    size = sum(os.path.getsize(os.path.join(d,f)) for d,_,fs in os.walk(dest) for f in fs)
+    print(f"Бэкап: {dest} ({size/1024/1024:.2f} MB)")
+
+def cleanup_old(keep=5):
+    backups = sorted([(p, os.path.getctime(p)) for p in 
+                     [os.path.join(BACKUP_DIR, d) for d in os.listdir(BACKUP_DIR)]], 
+                     key=lambda x: x[1], reverse=True)
+    for path, _ in backups[keep:]:
+        shutil.rmtree(path)
+
+backup_efi()
+cleanup_old()</div>
+                            <button class="btn-copy" onclick="copyCode(3)">Копировать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PowerShell автоматизация</h3>
+                        <div class="card-tech">PowerShell • WMI</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Скрипты автоматизации Windows.</p>
+                        <ul class="features">
+                            <li>Бэкапы</li>
+                            <li>Мониторинг CPU/RAM</li>
+                            <li>Очистка</li>
+                        </ul>
+                        <div class="result">Экономия 20 часов/месяц</div>
+                        <div class="code-section">
+                            <div class="code-preview">function Backup-Files {
+    $src = "$env:USERPROFILE\Documents"
+    $dst = "D:\Backups\backup_$(Get-Date -Format 'yyyy-MM-dd')"
+    Copy-Item -Path $src -Destination $dst -Recurse -Force
+    Write-Host "Бэкап: $dst" -ForegroundColor Green
+}
+
+function Monitor-System {
+    $cpu = (Get-WmiObject win32_processor | Measure-Object -property LoadPercentage -Average).Average
+    $os = Get-WmiObject win32_operatingsystem
+    $mem = [math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / $os.TotalVisibleMemorySize * 100)
+    Write-Host "CPU: $cpu% | RAM: $mem%" -ForegroundColor Yellow
+}
+
+function Clean-Temp {
+    $size = 0
+    "$env:TEMP", "$env:SystemRoot\Temp" | % {
+        Get-ChildItem $_ -Recurse -Force -EA SilentlyContinue | % {
+            $size += $_.Length
+            Remove-Item $_.FullName -Force -Recurse -EA SilentlyContinue
+        }
+    }
+    Write-Host "Очищено: $([math]::Round($size/1MB)) MB"
+}
+
+Backup-Files; Monitor-System; Clean-Temp</div>
+                            <button class="btn-copy" onclick="copyCode(4)">Копировать</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:clockerindo@yandex.ru">clockerindo@yandex.ru</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Telegram</strong>
+                    <a href="https://t.me/remontsuri">@remontsuri</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub</strong>
+                    <a href="https://github.com/remontsuri">github.com/remontsuri</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Местонахождение</strong>
+                    Санкт-Петербург | Удалённо
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Все проекты готовы к production</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+        
+        function copyCode(i) {
+            const code = document.querySelectorAll('.code-preview')[i].textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelectorAll('.btn-copy')[i];
+                btn.textContent = 'Скопировано';
+                setTimeout(() => btn.textContent = 'Копировать', 2000);
+            });
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+            });
+        });
+    </script>
+</body>
+</html>
