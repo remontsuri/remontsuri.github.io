@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Программы | Remont Suri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8f9fa;
+            --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --button-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --card-bg: #2d2d2d;
+                --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                --button-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+                --shadow: rgba(255, 255, 255, 0.1);
+                --border-color: #404040;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--card-bg);
+            transform: translateX(-5px);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        .program-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .program-card p {
+            margin-bottom: 20px;
+            opacity: 0.85;
+            font-size: 0.95em;
+        }
+
+        .program-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--button-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .program-button:hover {
+            background: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .program-button:active {
+            transform: translateY(0);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: var(--button-bg);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Назад на главную</a>
+        
+        <header>
+            <h1>Мои Программы и Проекты</h1>
+            <p class="subtitle">Коллекция проектов, созданных в процессе обучения и экспериментов</p>
+        </header>
+
+        <div class="programs-grid">
+            <div class="program-card">
+                <h2>🎮 Игра «Змейка»</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML5 Canvas</span>
+                </div>
+                <p>Классическая игра-змейка с современным интерфейсом. Управление стрелками, подсчет очков и плавная анимация.</p>
+                <a href="snake.html" class="program-button">Запустить игру</a>
+            </div>
+
+            <div class="program-card">
+                <h2>📝 Текстовый Редактор</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">LocalStorage</span>
+                </div>
+                <p>Простой, но функциональный текстовый редактор с автосохранением и подсветкой синтаксиса для разных языков.</p>
+                <a href="editor.html" class="program-button">Открыть редактор</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🎨 Генератор Цветовых Палитр</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">CSS</span>
+                </div>
+                <p>Инструмент для создания красивых цветовых схем. Генерация случайных палитр и экспорт в различных форматах.</p>
+                <a href="color-generator.html" class="program-button">Создать палитру</a>
+            </div>
+
+            <div class="program-card">
+                <h2>⏱️ Таймер Помодоро</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Web Audio API</span>
+                </div>
+                <p>Помощник для продуктивной работы по методу помодоро. Настраиваемые интервалы и уведомления.</p>
+                <a href="pomodoro.html" class="program-button">Начать фокус</a>
+            </div>
+
+            <div class="program-card">
+                <h2>📊 Калькулятор Расходов</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Chart.js</span>
+                </div>
+                <p>Приложение для учета личных финансов с визуализацией расходов по категориям и статистикой.</p>
+                <a href="expense-tracker.html" class="program-button">Учитывать расходы</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🌤️ Погодное Приложение</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">API</span>
+                </div>
+                <p>Показывает текущую погоду и прогноз на неделю для любого города. Использует OpenWeatherMap API.</p>
+                <a href="weather.html" class="program-button">Узнать погоду</a>
+            </div>
+
+            <div class="program-card">
+                <h2>✅ ToDo Менеджер</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">LocalStorage</span>
+                </div>
+                <p>Менеджер задач с возможностью создания категорий, установки приоритетов и фильтрации задач.</p>
+                <a href="todo.html" class="program-button">Управлять задачами</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🎵 Музыкальный Плеер</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML5 Audio</span>
+                </div>
+                <p>Веб-плеер с поддержкой плейлистов, эквалайзером и визуализацией звука в реальном времени.</p>
+                <a href="music-player.html" class="program-button">Слушать музыку</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🔐 Генератор Паролей</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Crypto</span>
+                </div>
+                <p>Создание надежных паролей с настройкой длины и типов символов. Проверка надежности пароля.</p>
+                <a href="password-generator.html" class="program-button">Сгенерировать пароль</a>
+            </div>
+
+            <div class="program-card">
+                <h2>📷 Фото Галерея</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">CSS Grid</span>
+                </div>
+                <p>Адаптивная фото-галерея с лайтбоксом, фильтрами и возможностью загрузки изображений.</p>
+                <a href="gallery.html" class="program-button">Открыть галерею</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🧮 Научный Калькулятор</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Math.js</span>
+                </div>
+                <p>Продвинутый калькулятор с поддержкой тригонометрических, логарифмических и других функций.</p>
+                <a href="calculator.html" class="program-button">Вычислить</a>
+            </div>
+
+            <div class="program-card">
+                <h2>🎯 Игра «Виселица»</h2>
+                <div class="tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">SVG</span>
+                </div>
+                <p>Классическая игра в угадывание слов с несколькими категориями и уровнями сложности.</p>
+                <a href="hangman.html" class="program-button">Играть</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Remont Suri | Все проекты созданы для обучения и демонстрации навыков</p>
+        </footer>
+    </div>
+</body>
+</html>
