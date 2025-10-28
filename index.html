@@ -3,425 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио с примерами кода - remontsuri</title>
+    <meta name="description" content="Портфолио специалиста по автоматизации. Python, Telegram боты, API интеграции, Hackintosh, системное администрирование.">
+    <title>Портфолио — Специалист по автоматизации</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma; background: #fff; color: #1e293b; line-height: 1.6; }
-        body.dark { background: #0f172a; color: #e2e8f0; }
-        header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 1.5rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-        .logo { font-size: 1.5rem; font-weight: bold; }
-        .nav { display: flex; gap: 1.5rem; }
-        .nav a { color: white; text-decoration: none; transition: 0.3s; }
-        .nav a:hover { color: #06b6d4; }
-        .theme-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #06b6d4;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --success-color: #10b981;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: #e2e8f0;
+        }
+        body.dark-mode section { background-color: #1e293b; }
+        body.dark-mode section.light-bg { background-color: #334155; }
+        body.dark-mode .project-card,
+        body.dark-mode .info-box { background-color: #1e293b; color: #e2e8f0; border-color: #475569; }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.8rem; font-weight: bold; }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: var(--accent-color); }
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover { background: rgba(255, 255, 255, 0.3); }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+            margin: 0.5rem;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+        }
+        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 5rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
         section { padding: 4rem 0; }
-        section.light { background: #f8fafc; }
-        body.dark section.light { background: #1e293b; }
-        h2 { color: #1e3a8a; font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
-        body.dark h2 { color: #06b6d4; }
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
-        .card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
-        body.dark .card { background: #1e293b; }
-        .card:hover { transform: translateY(-8px); }
-        .card h3 { color: #3b82f6; margin-bottom: 0.5rem; }
-        body.dark .card h3 { color: #06b6d4; }
-        .tech { font-size: 0.85rem; color: #64748b; background: rgba(59,130,246,0.1); padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; }
-        .features { list-style: none; margin: 1rem 0; }
-        .features li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; }
-        .features li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: bold; }
-        .result { background: rgba(16,185,129,0.1); border-left: 4px solid #10b981; padding: 1rem; margin-top: 1rem; border-radius: 4px; font-size: 0.9rem; }
-        .code-preview { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; max-height: 250px; overflow-y: auto; font-size: 0.85rem; }
-        body.dark .code-preview { background: #0f172a; }
+        section.light-bg { background-color: var(--light-bg); }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        body.dark-mode h2 { color: var(--accent-color); }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        .project-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            padding: 2rem;
+            color: white;
+        }
+        .project-header h3 { color: white; margin-bottom: 0.5rem; }
+        .project-tech { font-size: 0.85rem; opacity: 0.9; }
+        .project-body { padding: 2rem; }
+        .project-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .project-features li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .project-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        .project-result {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        .code-preview {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            max-height: 300px;
+            overflow-y: auto;
+        }
         .code-preview code { font-family: 'Courier New', monospace; }
-        .btn { background: #3b82f6; color: white; padding: 0.7rem 1.3rem; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 1rem; display: inline-block; text-decoration: none; }
-        .btn:hover { background: #06b6d4; transform: translateY(-2px); }
-        .btn-copy { background: #10b981; font-size: 0.85rem; padding: 0.5rem 1rem; margin-left: 0.5rem; }
-        footer { background: #0f172a; color: white; text-align: center; padding: 2rem; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
+        .btn-copy {
+            background: var(--success-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+        .btn-copy:hover { background: #059669; }
+        
+        .contact-content { text-align: center; margin-top: 3rem; }
+        .contact-info { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+        .contact-info p { font-size: 1.1rem; }
+        .contact-info a { color: var(--secondary-color); text-decoration: none; font-weight: 500; }
+        .contact-info a:hover { color: var(--accent-color); }
+        
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            h2 { font-size: 2rem; }
+            nav { gap: 1rem; }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="logo">💻 remontsuri</div>
-            <nav class="nav">
-                <a href="#projects">Проекты + Код</a>
+            <div class="logo">💻 DevPortfolio</div>
+            <nav>
+                <a href="#about">Обо мне</a>
+                <a href="#projects">Проекты</a>
                 <a href="#contact">Контакты</a>
             </nav>
-            <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Портфолио с примерами кода</h1>
-            <p style="font-size: 1.2rem;">🐍 Python • 🤖 Telegram Боты • 🔌 API • ⚙️ PowerShell</p>
-            <p style="font-size: 1rem; opacity: 0.85; margin-top: 1rem;">Production-ready приложения + исходный код</p>
+        <div class="hero-content">
+            <h1>Специалист по автоматизации и разработке</h1>
+            <p>Python • Telegram Боты • API интеграции • Hackintosh • Системное администрирование</p>
+            <a href="#contact" class="cta-button">Связаться со мной</a>
+            <a href="#projects" class="cta-button">Мои проекты</a>
         </div>
     </section>
 
-    <section id="projects" class="light">
+    <section id="about" class="light-bg">
         <div class="container">
-            <h2>🚀 Проекты с примерами кода</h2>
-            
-            <div class="projects">
-                <!-- Project 1: Telegram Bot -->
-                <div class="card">
-                    <h3>🤖 Telegram-бот монетизации</h3>
-                    <div class="tech">Python • Telebot • E-commerce • Email</div>
-                    <p>Полнофункциональная система продажи цифровых товаров через Telegram.</p>
-                    <ul class="features">
-                        <li>Каталог товаров с ценами</li>
-                        <li>Интеграция платёжных систем</li>
-                        <li>Управление промокодами до 50%</li>
-                        <li>Логирование + обработка ошибок</li>
-                    </ul>
-                    <div class="result">📊 Автоматизировано 100% обработки заказов</div>
-                    
-                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
-                    <div class="code-preview"><code class="language-python">import telebot
-from telebot import types
-import json
-import logging
+            <h2>Обо мне</h2>
+            <p style="max-width: 800px; margin: 2rem auto; text-align: center; font-size: 1.1rem;">
+                Технический специалист с практическим опытом автоматизации процессов, разработки ботов и системного администрирования. 
+                Специализируюсь на Python, PowerShell, Hackintosh и интеграциях с различными API.
+            </p>
+        </div>
+    </section>
 
-BOT_TOKEN = "YOUR_BOT_TOKEN"
+    <section id="projects">
+        <div class="container">
+            <h2>🚀 Реализованные проекты</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1: Telegram Bot -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Telegram-бот для монетизации</h3>
+                        <div class="project-tech">Python • Telebot • E-commerce</div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Система продажи цифровых товаров через Telegram.</strong></p>
+                        <ul class="project-features">
+                            <li>Обработка заказов и платежей</li>
+                            <li>Рассылка промокодов</li>
+                            <li>Управление клиентской базой</li>
+                            <li>Автоматические уведомления</li>
+                        </ul>
+                        <div class="project-result">✓ Автоматизировано 100% обработки</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
+                        <div class="code-preview"><code class="language-python">import telebot
+from telebot import types
+
+BOT_TOKEN = "YOUR_TOKEN"
 bot = telebot.TeleBot(BOT_TOKEN)
 
-# Настройка логирования
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 products = {
-    "product_1": {"name": "Курс Python", "price": 500},
-    "product_2": {"name": "API Integration", "price": 1500}
+    "p1": {"name": "Курс Python", "price": 500}
 }
 
 @bot.message_handler(commands=['start'])
-def start(message):
-    markup = types.ReplyKeyboardMarkup(row_width=2)
-    btn1 = types.KeyboardButton("🛒 Магазин")
-    btn2 = types.KeyboardButton("💰 Баланс")
-    markup.add(btn1, btn2)
-    
-    bot.send_message(message.chat.id, 
-        f"🎉 Привет, {message.from_user.first_name}!",
-        reply_markup=markup)
-    logger.info(f"Пользователь {message.chat.id} запустил бота")
+def start(msg):
+    markup = types.ReplyKeyboardMarkup()
+    markup.add(types.KeyboardButton("🛒 Магазин"))
+    bot.send_message(msg.chat.id, "Привет!", reply_markup=markup)
 
-@bot.message_handler(func=lambda msg: msg.text == "🛒 Магазин")
-def show_shop(message):
-    markup = types.InlineKeyboardMarkup()
-    for pid, product in products.items():
-        btn = types.InlineKeyboardButton(
-            f"{product['name']} - {product['price']}₽",
-            callback_data=f"buy_{pid}"
-        )
-        markup.add(btn)
-    bot.send_message(message.chat.id, "📦 Товары:", reply_markup=markup)
-
-if __name__ == "__main__":
-    logger.info("🤖 Бот запущен")
-    bot.infinity_polling()</code></div>
-                    <button class="btn btn-copy" onclick="copyCode(this, 0)">📋 Копировать код</button>
+bot.infinity_polling()</code></div>
+                        <button class="btn-copy" onclick="copyCode(0)">📋 Копировать</button>
+                    </div>
                 </div>
 
-                <!-- Project 2: Price Monitor -->
-                <div class="card">
-                    <h3>📊 Монитор цен маркетплейсов</h3>
-                    <div class="tech">Python • BeautifulSoup • SQLite • Email</div>
-                    <p>Система мониторинга цен в реальном времени с alert-системой.</p>
-                    <ul class="features">
-                        <li>Парсинг цен с маркетплейсов</li>
-                        <li>SQLite база данных</li>
-                        <li>Email уведомления</li>
-                        <li>Retry-логика при ошибках</li>
-                    </ul>
-                    <div class="result">⏱️ Экономия ~50 часов/месяц</div>
-                    
-                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
-                    <div class="code-preview"><code class="language-python">import requests
+                <!-- Project 2: CS2 Bot -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>CS2 Marketplace Bot</h3>
+                        <div class="project-tech">Python • Steam API • Email</div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Автоматизация торговли на маркетплейсе CS2.</strong></p>
+                        <ul class="project-features">
+                            <li>Парсинг цен товаров</li>
+                            <li>Выставление на продажу</li>
+                            <li>Мониторинг стоимости</li>
+                            <li>Email уведомления</li>
+                        </ul>
+                        <div class="project-result">✓ +25-30% прибыли</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
+                        <div class="code-preview"><code class="language-python">import requests
+import smtplib
+
+API_KEY = "YOUR_API_KEY"
+
+def get_prices(item):
+    url = "https://steamcommunity.com/market/priceoverview/"
+    params = {"appid": 730, "market_hash_name": item}
+    r = requests.get(url, params=params)
+    return r.json()
+
+def send_alert(msg):
+    server = smtplib.SMTP('smtp.yandex.ru', 587)
+    server.starttls()
+    # отправка email
+    print(f"✉️  {msg}")</code></div>
+                        <button class="btn-copy" onclick="copyCode(1)">📋 Копировать</button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Price Monitor -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Бот мониторинга цен</h3>
+                        <div class="project-tech">Python • Web Scraping • SQLite</div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Мониторинг и автоматические закупки.</strong></p>
+                        <ul class="project-features">
+                            <li>Мониторинг в реальном времени</li>
+                            <li>Автоматические покупки</li>
+                            <li>Целевое ценообразование</li>
+                            <li>Логирование операций</li>
+                        </ul>
+                        <div class="project-result">✓ Экономия ~50 часов/месяц</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
+                        <div class="code-preview"><code class="language-python">import requests
 from bs4 import BeautifulSoup
 import sqlite3
-import logging
-from datetime import datetime
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-def init_database():
-    conn = sqlite3.connect('prices.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS price_history
-                 (id INTEGER PRIMARY KEY, 
-                  product_name TEXT, 
-                  price REAL, 
-                  timestamp TEXT)''')
-    conn.commit()
-    return conn
 
 def parse_prices(url):
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, 'html.parser')
+    products = {}
+    for item in soup.find_all('div', class_='product'):
+        name = item.find('h2').text
+        price = float(item.find('span').text.replace('₽',''))
+        products[name] = price
+    return products
+
+conn = sqlite3.connect('prices.db')
+# сохранение в БД...</code></div>
+                        <button class="btn-copy" onclick="copyCode(2)">📋 Копировать</button>
+                    </div>
+                </div>
+
+                <!-- Project 4: Hackintosh -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Hackintosh на AMD Ryzen</h3>
+                        <div class="project-tech">OpenCore • Ryzen 7 5700X3D • RX 6750XT</div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Успешная установка macOS на AMD-платформе.</strong></p>
+                        <ul class="project-features">
+                            <li>Настройка OpenCore (mikigal/ryzen-hackintosh)</li>
+                            <li>Решение проблем со звуком, драйверами</li>
+                            <li>Конфигурация BIOS/UEFI</li>
+                            <li>Полная функциональность App Store/USB/GPU</li>
+                        </ul>
+                        <div class="project-result">✓ Рабочая macOS на AMD</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Скрипт бэкапа EFI:</h4>
+                        <div class="code-preview"><code class="language-python">import os
+import shutil
+from datetime import datetime
+
+EFI_DIR = r'E:\EFI'
+BACKUP_DIR = r'E:\EFI_BAK'
+
+def backup_efi():
+    today = datetime.now().strftime('%Y-%m-%d')
+    dest = os.path.join(BACKUP_DIR, f'EFI_{today}')
     try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        products = {}
-        
-        for item in soup.find_all('div', class_='product'):
-            name = item.find('h2').text.strip()
-            price = float(item.find('span', class_='price').text
-                         .replace('₽', '').strip())
-            products[name] = price
-            
-        logger.info(f"✅ Загружено {len(products)} товаров")
-        return products
+        shutil.copytree(EFI_DIR, dest)
+        print(f'✅ Бэкап EFI: {dest}')
     except Exception as e:
-        logger.error(f"❌ Ошибка парсинга: {e}")
-        return None
+        print(f'❌ Ошибка: {e}')
 
-def save_price(conn, product, price):
-    c = conn.cursor()
-    c.execute('''INSERT INTO price_history 
-                 (product_name, price, timestamp) 
-                 VALUES (?, ?, ?)''',
-              (product, price, datetime.now().isoformat()))
-    conn.commit()
-    logger.info(f"💾 Сохранено: {product} - {price}₽")
-
-def monitor():
-    conn = init_database()
-    while True:
-        prices = parse_prices("https://example.com")
-        if prices:
-            for product, price in prices.items():
-                save_price(conn, product, price)
-        time.sleep(300)  # Проверка каждые 5 минут
-
-if __name__ == "__main__":
-    logger.info("📊 Монитор цен запущен")
-    monitor()</code></div>
-                    <button class="btn btn-copy" onclick="copyCode(this, 1)">📋 Копировать код</button>
+backup_efi()</code></div>
+                        <button class="btn-copy" onclick="copyCode(3)">📋 Копировать</button>
+                    </div>
                 </div>
 
-                <!-- Project 3: CS2 Bot -->
-                <div class="card">
-                    <h3>🎮 CS2 Marketplace Bot</h3>
-                    <div class="tech">Python • Steam API • Email</div>
-                    <p>Автоматизация торговли на маркетплейсе CS2 с анализом прибыльности.</p>
-                    <ul class="features">
-                        <li>Steam Web API интеграция</li>
-                        <li>Расчёт прибыльности</li>
-                        <li>Email отчёты</li>
-                        <li>Обработка ошибок API</li>
-                    </ul>
-                    <div class="result">💰 +25-30% прибыли</div>
-                    
-                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
-                    <div class="code-preview"><code class="language-python">import requests
-import smtplib
-from email.mime.text import MIMEText
-import logging
-
-logger = logging.getLogger(__name__)
-
-CONFIG = {
-    "steam_api_key": "YOUR_API_KEY",
-    "app_id": 730,
-    "email": "clockerindo@yandex.ru"
+                <!-- Project 5: PowerShell -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>PowerShell Automation</h3>
+                        <div class="project-tech">PowerShell • WMI • Windows</div>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Скрипты автоматизации Windows.</strong></p>
+                        <ul class="project-features">
+                            <li>Автоматическое резервирование</li>
+                            <li>Управление файлами</li>
+                            <li>Мониторинг ресурсов</li>
+                            <li>Email alerts</li>
+                        </ul>
+                        <div class="project-result">✓ Экономия ~20 часов/месяц</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
+                        <div class="code-preview"><code class="language-powershell">function Backup-Files {
+    $source = "$env:USERPROFILE\Documents"
+    $dest = "D:\Backups\$(Get-Date -Format 'yyyy-MM-dd')"
+    
+    Copy-Item -Path $source -Destination $dest -Recurse
+    Write-Host "✅ Бэкап создан: $dest" -ForegroundColor Green
 }
 
-class EmailNotifier:
-    def __init__(self, email, password):
-        self.email = email
-        self.password = password
-    
-    def send_report(self, subject, body):
-        msg = MIMEText(body, 'plain', 'utf-8')
-        msg['Subject'] = subject
-        msg['From'] = self.email
-        msg['To'] = self.email
-        
-        server = smtplib.SMTP('smtp.yandex.ru', 587)
-        server.starttls()
-        server.login(self.email, self.password)
-        server.send_message(msg)
-        server.quit()
-        logger.info(f"✉️  Email отправлен: {subject}")
-
-class CS2Bot:
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.notifier = EmailNotifier(CONFIG['email'], "password")
-    
-    def get_inventory(self, user_id):
-        url = f"https://api.steampowered.com/IEconItems_730/GetUserInventory/v1"
-        params = {"key": self.api_key, "steamid": user_id}
-        
-        response = requests.get(url, params=params)
-        data = response.json()
-        
-        if data.get('result', {}).get('success'):
-            items = data['result'].get('items', [])
-            logger.info(f"✅ Загружено {len(items)} предметов")
-            return items
-        return None
-    
-    def analyze_profit(self, items):
-        total_value = sum(item.get('price', 0) for item in items)
-        
-        report = f"""
-CS2 Bot - Отчёт
-Загружено предметов: {len(items)}
-Общая стоимость: {total_value}₽
-        """
-        self.notifier.send_report("CS2 Bot Report", report)
-
-if __name__ == "__main__":
-    bot = CS2Bot(CONFIG['steam_api_key'])
-    items = bot.get_inventory("YOUR_STEAM_ID")
-    if items:
-        bot.analyze_profit(items)</code></div>
-                    <button class="btn btn-copy" onclick="copyCode(this, 2)">📋 Копировать код</button>
-                </div>
-
-                <!-- Project 4: PowerShell -->
-                <div class="card">
-                    <h3>⚙️ PowerShell Automation</h3>
-                    <div class="tech">PowerShell • WMI • Task Scheduler</div>
-                    <p>Автоматизация Windows: резервные копии, мониторинг, очистка.</p>
-                    <ul class="features">
-                        <li>Резервное копирование файлов</li>
-                        <li>Мониторинг CPU/RAM/Disk</li>
-                        <li>Email alerts</li>
-                        <li>Цветной вывод</li>
-                    </ul>
-                    <div class="result">⏱️ Экономия ~20 часов/месяц</div>
-                    
-                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
-                    <div class="code-preview"><code class="language-powershell"># PowerShell Automation Script
-
-function Backup-Files {
-    param(
-        [string]$Source = "$env:USERPROFILE\Documents",
-        [string]$Backup = "D:\Backups"
-    )
-    
-    $BackupName = "backup_$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')"
-    $BackupPath = Join-Path $Backup $BackupName
-    
-    Write-Host "📦 Начало резервного копирования..." -ForegroundColor Cyan
-    
-    try {
-        Copy-Item -Path $Source -Destination $BackupPath -Recurse -Force
-        Write-Host "✅ Резервная копия создана: $BackupPath" -ForegroundColor Green
-        
-        # Отправка email
-        Send-EmailNotification "Резервная копия успешно создана" `
-            "Файлы скопированы в $BackupPath"
-    }
-    catch {
-        Write-Host "❌ Ошибка: $_" -ForegroundColor Red
-    }
-}
-
-function Monitor-System {
-    Write-Host "📊 Мониторинг системы..." -ForegroundColor Cyan
-    
+function Monitor-CPU {
     $cpu = (Get-WmiObject win32_processor | 
             Measure-Object -property LoadPercentage -Average).Average
-    $mem = (Get-WmiObject win32_operatingsystem | 
-            Select-Object @{Name="Memory"; Expression={
-                [math]::Round(($_.TotalVisibleMemorySize - 
-                $_.FreePhysicalMemory) / 
-                $_.TotalVisibleMemorySize * 100)
-            }}).Memory
-    
-    Write-Host "CPU: $cpu% | RAM: $mem%" -ForegroundColor Yellow
-    
+    Write-Host "CPU: $cpu%" -ForegroundColor Yellow
     if ($cpu -gt 80) {
-        Write-Host "⚠️  CPU высокая загрузка!" -ForegroundColor Red
-        Send-EmailNotification "CPU Alert" "CPU: $cpu%"
+        Write-Host "⚠️  CPU высокая!" -ForegroundColor Red
     }
 }
 
-function Clean-TempFiles {
-    Write-Host "🧹 Очистка временных файлов..." -ForegroundColor Cyan
-    
-    $paths = @("$env:TEMP", "$env:SystemRoot\Temp")
-    $totalSize = 0
-    
-    foreach ($path in $paths) {
-        $items = Get-ChildItem -Path $path -Recurse -Force `
-                 -ErrorAction SilentlyContinue
-        foreach ($item in $items) {
-            $totalSize += $item.Length
-            Remove-Item $item.FullName -Force -ErrorAction SilentlyContinue
-        }
-    }
-    
-    $sizeMB = [math]::Round($totalSize / 1MB, 2)
-    Write-Host "✅ Очищено: $sizeMB MB" -ForegroundColor Green
-}
-
-# Запуск
 Backup-Files
-Monitor-System
-Clean-TempFiles</code></div>
-                    <button class="btn btn-copy" onclick="copyCode(this, 3)">📋 Копировать код</button>
+Monitor-CPU</code></div>
+                        <button class="btn-copy" onclick="copyCode(4)">📋 Копировать</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="light-bg">
         <div class="container">
-            <h2>📞 Контакты</h2>
-            <div style="text-align: center; margin-top: 2rem;">
-                <p style="margin-bottom: 1rem;"><strong>📧 Email:</strong> <a href="mailto:clockerindo@yandex.ru" style="color: #3b82f6;">clockerindo@yandex.ru</a></p>
-                <p style="margin-bottom: 1rem;"><strong>💬 Telegram:</strong> <a href="https://t.me/remontsuri" target="_blank" style="color: #3b82f6;">@remontsuri</a></p>
-                <p style="margin-bottom: 1rem;"><strong>🐙 GitHub:</strong> <a href="https://github.com/remontsuri" target="_blank" style="color: #3b82f6;">github.com/remontsuri</a></p>
-                <p style="margin-top: 2rem; color: #64748b;">📍 Санкт-Петербург | Удалённо | Зарплата: от 80 000 ₽</p>
+            <h2>Свяжитесь со мной</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>📧 <strong>Email:</strong> <a href="mailto:clockerindo@yandex.ru">clockerindo@yandex.ru</a></p>
+                    <p>💬 <strong>Telegram:</strong> <a href="https://t.me/remontsuri" target="_blank">@remontsuri</a></p>
+                    <p>🐙 <strong>GitHub:</strong> <a href="https://github.com/remontsuri" target="_blank">github.com/remontsuri</a></p>
+                    <p>📍 <strong>Локация:</strong> Санкт-Петербург | Удалённо</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 remontsuri | Production-ready приложения + исходный код</p>
+        <p>&copy; 2025 remontsuri | Все программы готовы к использованию</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
         hljs.highlightAll();
         
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-            document.querySelector('.theme-btn').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
         }
         
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-            document.querySelector('.theme-btn').textContent = '☀️';
-        }
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
         
-        function copyCode(btn, index) {
-            const codeBlocks = document.querySelectorAll('.code-preview code');
-            const code = codeBlocks[index].textContent;
+        function copyCode(index) {
+            const codes = document.querySelectorAll('.code-preview code');
+            const code = codes[index].textContent;
             navigator.clipboard.writeText(code).then(() => {
-                btn.textContent = '✅ Скопировано!';
+                const btns = document.querySelectorAll('.btn-copy');
+                btns[index].textContent = '✅ Скопировано!';
                 setTimeout(() => {
-                    btn.textContent = '📋 Копировать код';
+                    btns[index].textContent = '📋 Копировать';
                 }, 2000);
             });
         }
         
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
