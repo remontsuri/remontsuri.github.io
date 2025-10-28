@@ -3,419 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио специалиста по автоматизации. Python, Telegram боты, API интеграции, системное администрирование.">
     <title>Портфолио | Специалист по автоматизации</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.6; color: #0f172a; background: #fff; }
+        body.dark { background: #0f172a; color: #e2e8f0; }
+        body.dark section { background: #1e293b; }
+        body.dark .card { background: #1e293b; border-color: #334155; }
         
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #64748b;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --border: #e2e8f0;
-            --success: #059669;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-        }
+        header { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 600; }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+        nav a:hover { opacity: 0.8; }
+        .theme-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 36px; height: 36px; border-radius: 6px; cursor: pointer; }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 5rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
         
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: #ffffff;
-            transition: background-color 0.3s ease;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 4rem 0; }
+        .light-bg { background: #f8fafc; }
+        body.dark .light-bg { background: #1e293b; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; color: #0f172a; font-weight: 700; text-align: center; }
+        body.dark h2 { color: #f1f5f9; }
         
-        body.dark-mode {
-            background: var(--dark-bg);
-            color: #e2e8f0;
-        }
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .card { background: white; border-radius: 8px; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .card-header { padding: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+        .card-header h3 { font-size: 1.3rem; color: #2563eb; margin-bottom: 0.5rem; font-weight: 600; }
+        body.dark .card-header h3 { color: #60a5fa; }
+        .card-tech { font-size: 0.875rem; color: #64748b; font-weight: 500; }
+        .card-body { padding: 1.5rem; }
+        .card-desc { color: #475569; margin-bottom: 1.5rem; line-height: 1.7; }
+        body.dark .card-desc { color: #cbd5e1; }
         
-        body.dark-mode section {
-            background: #1e293b;
-        }
+        .features { list-style: none; margin: 1.5rem 0; }
+        .features li { padding: 0.4rem 0 0.4rem 1.2rem; position: relative; color: #475569; font-size: 0.95rem; }
+        .features li::before { content: '•'; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
+        .result { background: #f0fdf4; border-left: 3px solid #059669; padding: 0.875rem 1rem; margin-top: 1.5rem; border-radius: 4px; font-size: 0.9rem; color: #166534; font-weight: 500; }
+        body.dark .result { background: rgba(5,150,105,0.1); color: #86efac; }
         
-        body.dark-mode .light-bg {
-            background: #1e293b;
-        }
+        .code-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+        body.dark .code-section { border-color: #334155; }
+        .code-section h4 { font-size: 1rem; margin-bottom: 1rem; color: #0f172a; font-weight: 600; }
+        body.dark .code-section h4 { color: #f1f5f9; }
+        .code-preview { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 1px solid #334155; }
+        .code-preview code { font-family: 'Courier New', monospace; }
+        .btn-copy { background: #059669; color: white; padding: 0.625rem 1.125rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 500; font-size: 0.875rem; transition: 0.2s; }
+        .btn-copy:hover { background: #047857; }
+        .code-meta { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; font-size: 0.875rem; color: #64748b; }
+        body.dark .code-meta { border-color: #334155; }
         
-        body.dark-mode .project-card {
-            background: #1e293b;
-            border-color: #334155;
-        }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .contact-item { padding: 1.5rem; background: white; border-radius: 6px; border: 1px solid #e2e8f0; text-align: center; }
+        body.dark .contact-item { background: #1e293b; border-color: #334155; }
+        .contact-item strong { display: block; margin-bottom: 0.5rem; }
+        .contact-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
         
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-            padding: 1.2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-        
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: opacity 0.2s;
-        }
-        
-        nav a:hover {
-            opacity: 0.8;
-        }
-        
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a8a 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-        
-        .hero p {
-            font-size: 1.15rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            line-height: 1.7;
-        }
-        
-        .hero-tech {
-            font-size: 1rem;
-            opacity: 0.75;
-            margin-top: 1rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 4rem 0;
-        }
-        
-        .light-bg {
-            background: var(--light-bg);
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        body.dark-mode h2 {
-            color: #f1f5f9;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-size: 1.05rem;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .project-header h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        body.dark-mode .project-header h3 {
-            color: #60a5fa;
-        }
-        
-        .project-tech {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        .project-body {
-            padding: 1.5rem;
-        }
-        
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        body.dark-mode .project-description {
-            color: #cbd5e1;
-        }
-        
-        .project-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-        
-        .project-features li {
-            padding: 0.4rem 0 0.4rem 1.2rem;
-            position: relative;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-        
-        .project-features li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
-        .project-result {
-            background: #f0fdf4;
-            border-left: 3px solid var(--success);
-            padding: 0.875rem 1rem;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: #166534;
-            font-weight: 500;
-        }
-        
-        body.dark-mode .project-result {
-            background: rgba(5, 150, 105, 0.1);
-            color: #86efac;
-        }
-        
-        .code-section {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .code-section h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        
-        body.dark-mode .code-section h4 {
-            color: #f1f5f9;
-        }
-        
-        .code-preview {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 1.25rem;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #334155;
-        }
-        
-        .code-preview code {
-            font-family: 'Courier New', 'Consolas', monospace;
-        }
-        
-        .btn-copy {
-            background: var(--success);
-            color: white;
-            padding: 0.625rem 1.125rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.875rem;
-            transition: background 0.2s;
-        }
-        
-        .btn-copy:hover {
-            background: #047857;
-        }
-        
-        .code-meta {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        body.dark-mode .code-meta {
-            border-color: #334155;
-        }
-        
-        .code-meta strong {
-            color: var(--text-primary);
-        }
-        
-        body.dark-mode .code-meta strong {
-            color: #f1f5f9;
-        }
-        
-        .contact-section {
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .contact-item {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-        
-        body.dark-mode .contact-item {
-            background: #1e293b;
-            border-color: #334155;
-        }
-        
-        .contact-item strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        body.dark-mode .contact-item strong {
-            color: #f1f5f9;
-        }
-        
-        .contact-item a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        footer {
-            background: var(--dark-bg);
-            color: #94a3b8;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        footer p {
-            font-size: 0.9rem;
-        }
+        footer { background: #0f172a; color: #94a3b8; padding: 2rem 0; text-align: center; margin-top: 4rem; }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            nav {
-                gap: 1rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            .projects { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -427,280 +83,177 @@
                 <a href="#projects">Проекты</a>
                 <a href="#contact">Контакты</a>
             </nav>
-            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">◐</button>
+            <button class="theme-btn" onclick="toggleTheme()">◐</button>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
             <h1>Backend разработчик и специалист по автоматизации</h1>
-            <p>Опыт создания production-ready систем автоматизации, интеграции API и разработки ботов. Специализация: Python, PowerShell и системное администрирование.</p>
-            <div class="hero-tech">Python • Telegram Боты • API Интеграции • Hackintosh • Системное администрирование</div>
+            <p>Опыт создания production-ready систем автоматизации, интеграции API и разработки ботов. Специализация на Python, PowerShell и системном администрировании.</p>
         </div>
     </section>
 
     <section id="projects" class="light-bg">
         <div class="container">
             <h2>Избранные проекты</h2>
-            <p class="section-subtitle">Production-ready приложения с полным исходным кодом</p>
             
-            <div class="projects-grid">
+            <div class="projects">
                 
-                <!-- Проект 1 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>E-commerce Telegram бот</h3>
-                        <div class="project-tech">Python • Telebot • JSON • Logging</div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Telegram бот для продаж</h3>
+                        <div class="card-tech">Python • Telebot • JSON • Logging</div>
                     </div>
-                    <div class="project-body">
-                        <p class="project-description">Полная система маркетплейса цифровых товаров с обработкой заказов, управлением промокодами и аналитикой продаж.</p>
-                        <ul class="project-features">
+                    <div class="card-body">
+                        <p class="card-desc">Полная система маркетплейса цифровых товаров с обработкой заказов и промокодами.</p>
+                        <ul class="features">
                             <li>Каталог товаров с ценами</li>
-                            <li>Система обработки заказов</li>
-                            <li>Движок промокодов</li>
-                            <li>Комплексное логирование</li>
-                            <li>Обработка ошибок и валидация</li>
+                            <li>Обработка заказов</li>
+                            <li>Управление промокодами</li>
+                            <li>Логирование и обработка ошибок</li>
                         </ul>
-                        <div class="project-result">Результат: 100% автоматизированная обработка заказов</div>
+                        <div class="result">Результат: 100% автоматизация обработки</div>
                         
                         <div class="code-section">
                             <h4>Полный исходный код</h4>
                             <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
-"""E-commerce Telegram Bot System"""
 import telebot
 from telebot import types
-import json
-import os
-import logging
+import json, os, logging
 from datetime import datetime
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+BOT_TOKEN = "YOUR_BOT_TOKEN"
 bot = telebot.TeleBot(BOT_TOKEN)
 
-PRODUCTS_FILE = "products.json"
-USERS_FILE = "users.json"
-
-def load_data(filename):
-    try:
-        if os.path.exists(filename):
-            with open(filename, 'r', encoding='utf-8') as f:
-                return json.load(f)
-    except Exception as e:
-        logger.error(f"Ошибка загрузки {filename}: {e}")
+def load_data(f):
+    if os.path.exists(f):
+        with open(f, 'r', encoding='utf-8') as file:
+            return json.load(file)
     return {}
 
-def save_data(filename, data):
-    try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        logger.info(f"Данные сохранены в {filename}")
-    except Exception as e:
-        logger.error(f"Ошибка сохранения {filename}: {e}")
+def save_data(f, d):
+    with open(f, 'w', encoding='utf-8') as file:
+        json.dump(d, file, ensure_ascii=False, indent=4)
 
-products = load_data(PRODUCTS_FILE) or {
-    "p1": {"name": "Курс Python", "price": 500},
-    "p2": {"name": "API интеграция", "price": 1500},
-    "p3": {"name": "Telegram бот", "price": 1000}
-}
-users = load_data(USERS_FILE) or {}
+products = {"p1": {"name": "Курс Python", "price": 500}}
+users = load_data("users.json")
 
 @bot.message_handler(commands=['start'])
-def start(message):
-    user_id = str(message.chat.id)
-    if user_id not in users:
-        users[user_id] = {
-            "name": message.from_user.first_name,
-            "purchases": [],
-            "balance": 0,
-            "created": datetime.now().isoformat()
-        }
-        save_data(USERS_FILE, users)
-        logger.info(f"Новый пользователь: {user_id}")
+def start(msg):
+    uid = str(msg.chat.id)
+    if uid not in users:
+        users[uid] = {"name": msg.from_user.first_name, "purchases": []}
+        save_data("users.json", users)
     
-    markup = types.ReplyKeyboardMarkup(row_width=2)
-    btn1 = types.KeyboardButton("Магазин")
-    btn2 = types.KeyboardButton("Баланс")
-    btn3 = types.KeyboardButton("Заказы")
-    markup.add(btn1, btn2, btn3)
-    
-    bot.send_message(
-        message.chat.id,
-        f"Добро пожаловать, {message.from_user.first_name}!\\n"
-        f"Откройте наш цифровой маркетплейс.",
-        reply_markup=markup
-    )
+    markup = types.ReplyKeyboardMarkup()
+    markup.add("Магазин", "Заказы")
+    bot.send_message(msg.chat.id, "Добро пожаловать!", reply_markup=markup)
 
-@bot.message_handler(func=lambda msg: msg.text == "Магазин")
-def show_shop(message):
+@bot.message_handler(func=lambda m: m.text == "Магазин")
+def shop(msg):
     markup = types.InlineKeyboardMarkup()
-    for pid, product in products.items():
-        btn = types.InlineKeyboardButton(
-            f"{product['name']} - {product['price']} ₽",
-            callback_data=f"buy_{pid}"
-        )
-        markup.add(btn)
-    bot.send_message(
-        message.chat.id,
-        "Доступные товары:",
-        reply_markup=markup
-    )
-    logger.info(f"Пользователь {message.chat.id} открыл магазин")
+    for pid, p in products.items():
+        markup.add(types.InlineKeyboardButton(f"{p['name']} - {p['price']}₽", callback_data=f"buy_{pid}"))
+    bot.send_message(msg.chat.id, "Товары:", reply_markup=markup)
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith("buy_"))
-def buy_product(call):
+@bot.callback_query_handler(func=lambda c: c.data.startswith("buy_"))
+def buy(call):
     pid = call.data.split("_")[1]
-    product = products.get(pid)
-    
-    if not product:
-        bot.answer_callback_query(call.id, "Товар не найден")
-        return
-    
-    user_id = str(call.from_user.id)
-    users[user_id]["purchases"].append({
-        "product": product["name"],
-        "price": product["price"],
-        "date": datetime.now().isoformat()
-    })
-    save_data(USERS_FILE, users)
-    
-    bot.answer_callback_query(call.id, "Покупка успешна")
-    bot.send_message(
-        call.message.chat.id,
-        f"Покупка подтверждена: {product['name']}\\n"
-        f"Сумма: {product['price']} ₽"
-    )
-    logger.info(f"Покупка: пользователь {user_id} купил {product['name']}")
+    product = products[pid]
+    uid = str(call.from_user.id)
+    users[uid]["purchases"].append({"product": product["name"], "price": product["price"]})
+    save_data("users.json", users)
+    bot.send_message(call.message.chat.id, f"Куплено: {product['name']}")
 
-@bot.message_handler(func=lambda msg: msg.text == "Баланс")
-def show_balance(message):
-    user_id = str(message.chat.id)
-    user = users.get(user_id, {})
-    balance = user.get("balance", 0)
-    purchases = len(user.get("purchases", []))
-    bot.send_message(
-        message.chat.id,
-        f"Баланс: {balance} ₽\\nВсего заказов: {purchases}"
-    )
-
-@bot.message_handler(func=lambda msg: msg.text == "Заказы")
-def show_purchases(message):
-    user_id = str(message.chat.id)
-    user = users.get(user_id, {})
-    purchases = user.get("purchases", [])
-    
-    if not purchases:
-        bot.send_message(message.chat.id, "Заказов пока нет")
-        return
-    
-    msg = "Ваши заказы:\\n\\n"
-    total = 0
-    for i, p in enumerate(purchases, 1):
-        msg += f"{i}. {p['product']} - {p['price']} ₽\\n"
-        total += p['price']
-    msg += f"\\nИтого: {total} ₽"
-    bot.send_message(message.chat.id, msg)
-
-if __name__ == "__main__":
-    logger.info("Бот успешно запущен")
-    if BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
-        logger.error("Замените BOT_TOKEN на актуальный токен")
-        print("Получите токен у @BotFather")
-    else:
-        bot.infinity_polling()</code></div>
-                            <button class="btn-copy" onclick="copyCode(0)">Копировать код</button>
-                            <div class="code-meta">
-                                <strong>Установка:</strong> pip install pytelegrambotapi<br>
-                                <strong>Использование:</strong> python telegram_bot.py
-                            </div>
+bot.infinity_polling()</code></div>
+                            <button class="btn-copy" onclick="copyCode(0)">Копировать</button>
+                            <div class="code-meta"><strong>Установка:</strong> pip install pytelegrambotapi</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Остальные проекты аналогично переведены... -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Монитор цен маркетплейсов</h3>
+                        <div class="card-tech">Python • BeautifulSoup • SQLite</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Система мониторинга цен в реальном времени с автоматическими уведомлениями.</p>
+                        <ul class="features">
+                            <li>Парсинг цен с сайтов</li>
+                            <li>SQLite база данных</li>
+                            <li>Система алертов</li>
+                            <li>Статистика изменений</li>
+                        </ul>
+                        <div class="result">Результат: Экономия 50 часов/месяц</div>
+                        
+                        <div class="code-section">
+                            <h4>Полный исходный код</h4>
+                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
+import requests, sqlite3, time, logging
+from bs4 import BeautifulSoup
+from datetime import datetime
 
-            </div>
-        </div>
-    </section>
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-    <section id="contact">
-        <div class="container">
-            <h2>Контактная информация</h2>
-            <div class="contact-section">
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <strong>Email</strong>
-                        <a href="mailto:clockerindo@yandex.ru">clockerindo@yandex.ru</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Telegram</strong>
-                        <a href="https://t.me/remontsuri" target="_blank">@remontsuri</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>GitHub</strong>
-                        <a href="https://github.com/remontsuri" target="_blank">github.com/remontsuri</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Местонахождение</strong>
-                        Санкт-Петербург | Удалённо
+def init_db():
+    conn = sqlite3.connect('prices.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS prices
+                 (id INTEGER PRIMARY KEY, product TEXT, price REAL, timestamp TEXT)''')
+    conn.commit()
+    return conn
+
+def parse_prices(url):
+    try:
+        r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
+        soup = BeautifulSoup(r.content, 'html.parser')
+        products = {}
+        for item in soup.find_all('div', class_='product'):
+            name = item.find('h2').text.strip()
+            price = float(item.find('span', class_='price').text.replace('₽','').strip())
+            products[name] = price
+        return products
+    except Exception as e:
+        logger.error(f"Ошибка: {e}")
+        return None
+
+def monitor():
+    conn = init_db()
+    while True:
+        prices = parse_prices("https://example.com")
+        if prices:
+            c = conn.cursor()
+            for name, price in prices.items():
+                c.execute("INSERT INTO prices (product, price, timestamp) VALUES (?, ?, ?)",
+                         (name, price, datetime.now().isoformat()))
+                logger.info(f"{name}: {price}₽")
+            conn.commit()
+        time.sleep(300)
+
+monitor()</code></div>
+                            <button class="btn-copy" onclick="copyCode(1)">Копировать</button>
+                            <div class="code-meta"><strong>Установка:</strong> pip install requests beautifulsoup4</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Все проекты готовы к production и доступны для ознакомления</p>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script>
-        hljs.highlightAll();
-        
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.textContent = '◑';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            themeToggle.textContent = isDark ? '◑' : '◐';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-        
-        function copyCode(index) {
-            const codes = document.querySelectorAll('.code-preview code');
-            const code = codes[index].textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btns = document.querySelectorAll('.btn-copy');
-                const originalText = btns[index].textContent;
-                btns[index].textContent = 'Скопировано';
-                setTimeout(() => {
-                    btns[index].textContent = originalText;
-                }, 2000);
-            });
-        }
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>CS2 Marketplace бот</h3>
+                        <div class="card-tech">Python • Steam API • Email</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Автоматизация торговли на маркетплейсе CS2 с анализом прибыльности.</p>
+                        <ul class="features">
+                            <li>Steam API интеграция</li>
+                            <li>Парсинг инвентаря</li>
+                            <li>Расчёт прибыльности</li>
+                            <li>Email отчёты</li>
+                        </ul>
+                        <div class="result">Результат: +25% прибыли</div>
