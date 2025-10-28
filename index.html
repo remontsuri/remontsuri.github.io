@@ -3,48 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио специалиста по автоматизации. Python, Telegram боты, API интеграции, Hackintosh, системное администрирование.">
-    <title>Портфолио — Специалист по автоматизации</title>
+    <meta name="description" content="Портфолио специалиста по автоматизации. Python, Telegram боты, API интеграции, системное администрирование.">
+    <title>Портфолио | Специалист по автоматизации</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         :root {
-            --primary-color: #1e3a8a;
-            --secondary-color: #3b82f6;
-            --accent-color: #06b6d4;
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
             --dark-bg: #0f172a;
             --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --success-color: #10b981;
+            --border: #e2e8f0;
+            --success: #059669;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
         }
-        html { scroll-behavior: smooth; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #ffffff;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            color: var(--text-primary);
+            background: #ffffff;
+            transition: background-color 0.3s ease;
         }
+        
         body.dark-mode {
-            background-color: var(--dark-bg);
+            background: var(--dark-bg);
             color: #e2e8f0;
         }
-        body.dark-mode section { background-color: #1e293b; }
-        body.dark-mode section.light-bg { background-color: #334155; }
-        body.dark-mode .project-card,
-        body.dark-mode .info-box { background-color: #1e293b; color: #e2e8f0; border-color: #475569; }
+        
+        body.dark-mode section {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .light-bg {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .project-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
         
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
+        
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -53,386 +74,1362 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo { font-size: 1.8rem; font-weight: bold; }
-        nav { display: flex; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: var(--accent-color); }
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: background 0.2s;
         }
-        .theme-toggle:hover { background: rgba(255, 255, 255, 0.3); }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
         
         .hero {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a8a 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
-        .hero p { font-size: 1.3rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent-color);
-            margin: 0.5rem;
-            cursor: pointer;
-        }
-        .cta-button:hover {
-            background: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
         }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 4rem 0; }
-        section.light-bg { background-color: var(--light-bg); }
-        h2 {
-            font-size: 2.5rem;
+        .hero h1 {
+            font-size: 2.8rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        .hero-tech {
+            font-size: 1rem;
+            opacity: 0.75;
+            margin-top: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .light-bg {
+            background: var(--light-bg);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 700;
             text-align: center;
         }
-        body.dark-mode h2 { color: var(--accent-color); }
+        
+        body.dark-mode h2 {
+            color: #f1f5f9;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
         
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
+        
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
+        
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
+        
         .project-header {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-            padding: 2rem;
-            color: white;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
         }
-        .project-header h3 { color: white; margin-bottom: 0.5rem; }
-        .project-tech { font-size: 0.85rem; opacity: 0.9; }
-        .project-body { padding: 2rem; }
+        
+        .project-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        body.dark-mode .project-header h3 {
+            color: #60a5fa;
+        }
+        
+        .project-tech {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        body.dark-mode .project-description {
+            color: #cbd5e1;
+        }
+        
         .project-features {
             list-style: none;
             margin: 1.5rem 0;
         }
+        
         .project-features li {
-            padding: 0.4rem 0;
-            padding-left: 1.2rem;
+            padding: 0.4rem 0 0.4rem 1.2rem;
             position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
+        
         .project-features li::before {
-            content: '→';
+            content: '•';
             position: absolute;
             left: 0;
-            color: var(--accent-color);
+            color: var(--primary);
+            font-weight: bold;
         }
+        
         .project-result {
-            background: rgba(6, 182, 212, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            color: var(--primary-color);
+            background: #f0fdf4;
+            border-left: 3px solid var(--success);
+            padding: 0.875rem 1rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #166534;
             font-weight: 500;
-            margin-top: 1rem;
+        }
+        
+        body.dark-mode .project-result {
+            background: rgba(5, 150, 105, 0.1);
+            color: #86efac;
+        }
+        
+        .code-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .code-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        body.dark-mode .code-section h4 {
+            color: #f1f5f9;
         }
         
         .code-preview {
             background: #1e293b;
             color: #e2e8f0;
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 1.25rem;
+            border-radius: 6px;
             overflow-x: auto;
             margin: 1rem 0;
             font-size: 0.85rem;
-            line-height: 1.5;
-            max-height: 300px;
+            line-height: 1.6;
+            max-height: 400px;
             overflow-y: auto;
+            border: 1px solid #334155;
         }
-        .code-preview code { font-family: 'Courier New', monospace; }
+        
+        .code-preview code {
+            font-family: 'Courier New', 'Consolas', monospace;
+        }
+        
         .btn-copy {
-            background: var(--success-color);
+            background: var(--success);
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.625rem 1.125rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: 0.3s;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: background 0.2s;
         }
-        .btn-copy:hover { background: #059669; }
         
-        .contact-content { text-align: center; margin-top: 3rem; }
-        .contact-info { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
-        .contact-info p { font-size: 1.1rem; }
-        .contact-info a { color: var(--secondary-color); text-decoration: none; font-weight: 500; }
-        .contact-info a:hover { color: var(--accent-color); }
+        .btn-copy:hover {
+            background: #047857;
+        }
+        
+        .code-meta {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        body.dark-mode .code-meta {
+            border-color: #334155;
+        }
+        
+        .code-meta strong {
+            color: var(--text-primary);
+        }
+        
+        body.dark-mode .code-meta strong {
+            color: #f1f5f9;
+        }
+        
+        .contact-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        body.dark-mode .contact-item {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        body.dark-mode .contact-item strong {
+            color: #f1f5f9;
+        }
+        
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
         
         footer {
             background: var(--dark-bg);
-            color: white;
-            padding: 3rem 0;
+            color: #94a3b8;
+            padding: 2rem 0;
             text-align: center;
             margin-top: 4rem;
         }
         
+        footer p {
+            font-size: 0.9rem;
+        }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            h2 { font-size: 2rem; }
-            nav { gap: 1rem; }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="logo">💻 DevPortfolio</div>
+            <div class="logo">Portfolio</div>
             <nav>
-                <a href="#about">Обо мне</a>
-                <a href="#projects">Проекты</a>
-                <a href="#contact">Контакты</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Специалист по автоматизации и разработке</h1>
-            <p>Python • Telegram Боты • API интеграции • Hackintosh • Системное администрирование</p>
-            <a href="#contact" class="cta-button">Связаться со мной</a>
-            <a href="#projects" class="cta-button">Мои проекты</a>
+        <div class="container">
+            <h1>Backend Developer & Automation Specialist</h1>
+            <p>Experienced in building production-ready automation systems, API integrations, and bot development. Specialized in Python, PowerShell, and system administration.</p>
+            <div class="hero-tech">Python • Telegram Bots • API Integrations • Hackintosh • System Administration</div>
         </div>
     </section>
 
-    <section id="about" class="light-bg">
+    <section id="projects" class="light-bg">
         <div class="container">
-            <h2>Обо мне</h2>
-            <p style="max-width: 800px; margin: 2rem auto; text-align: center; font-size: 1.1rem;">
-                Технический специалист с практическим опытом автоматизации процессов, разработки ботов и системного администрирования. 
-                Специализируюсь на Python, PowerShell, Hackintosh и интеграциях с различными API.
-            </p>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>🚀 Реализованные проекты</h2>
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">Production-ready applications with complete source code</p>
+            
             <div class="projects-grid">
                 
-                <!-- Project 1: Telegram Bot -->
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>Telegram-бот для монетизации</h3>
-                        <div class="project-tech">Python • Telebot • E-commerce</div>
+                        <h3>E-commerce Telegram Bot</h3>
+                        <div class="project-tech">Python • Telebot • JSON • Logging</div>
                     </div>
                     <div class="project-body">
-                        <p><strong>Система продажи цифровых товаров через Telegram.</strong></p>
+                        <p class="project-description">Complete digital goods marketplace system with order processing, promotional codes management, and sales analytics.</p>
                         <ul class="project-features">
-                            <li>Обработка заказов и платежей</li>
-                            <li>Рассылка промокодов</li>
-                            <li>Управление клиентской базой</li>
-                            <li>Автоматические уведомления</li>
+                            <li>Product catalog with pricing</li>
+                            <li>Order processing system</li>
+                            <li>Promotional codes engine</li>
+                            <li>Comprehensive logging</li>
+                            <li>Error handling and validation</li>
                         </ul>
-                        <div class="project-result">✓ Автоматизировано 100% обработки</div>
+                        <div class="project-result">Result: 100% automated order processing</div>
                         
-                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
-                        <div class="code-preview"><code class="language-python">import telebot
+                        <div class="code-section">
+                            <h4>Complete Source Code</h4>
+                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
+"""E-commerce Telegram Bot System"""
+import telebot
 from telebot import types
-
-BOT_TOKEN = "YOUR_TOKEN"
-bot = telebot.TeleBot(BOT_TOKEN)
-
-products = {
-    "p1": {"name": "Курс Python", "price": 500}
-}
-
-@bot.message_handler(commands=['start'])
-def start(msg):
-    markup = types.ReplyKeyboardMarkup()
-    markup.add(types.KeyboardButton("🛒 Магазин"))
-    bot.send_message(msg.chat.id, "Привет!", reply_markup=markup)
-
-bot.infinity_polling()</code></div>
-                        <button class="btn-copy" onclick="copyCode(0)">📋 Копировать</button>
-                    </div>
-                </div>
-
-                <!-- Project 2: CS2 Bot -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>CS2 Marketplace Bot</h3>
-                        <div class="project-tech">Python • Steam API • Email</div>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Автоматизация торговли на маркетплейсе CS2.</strong></p>
-                        <ul class="project-features">
-                            <li>Парсинг цен товаров</li>
-                            <li>Выставление на продажу</li>
-                            <li>Мониторинг стоимости</li>
-                            <li>Email уведомления</li>
-                        </ul>
-                        <div class="project-result">✓ +25-30% прибыли</div>
-                        
-                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
-                        <div class="code-preview"><code class="language-python">import requests
-import smtplib
-
-API_KEY = "YOUR_API_KEY"
-
-def get_prices(item):
-    url = "https://steamcommunity.com/market/priceoverview/"
-    params = {"appid": 730, "market_hash_name": item}
-    r = requests.get(url, params=params)
-    return r.json()
-
-def send_alert(msg):
-    server = smtplib.SMTP('smtp.yandex.ru', 587)
-    server.starttls()
-    # отправка email
-    print(f"✉️  {msg}")</code></div>
-                        <button class="btn-copy" onclick="copyCode(1)">📋 Копировать</button>
-                    </div>
-                </div>
-
-                <!-- Project 3: Price Monitor -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Бот мониторинга цен</h3>
-                        <div class="project-tech">Python • Web Scraping • SQLite</div>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Мониторинг и автоматические закупки.</strong></p>
-                        <ul class="project-features">
-                            <li>Мониторинг в реальном времени</li>
-                            <li>Автоматические покупки</li>
-                            <li>Целевое ценообразование</li>
-                            <li>Логирование операций</li>
-                        </ul>
-                        <div class="project-result">✓ Экономия ~50 часов/месяц</div>
-                        
-                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
-                        <div class="code-preview"><code class="language-python">import requests
-from bs4 import BeautifulSoup
-import sqlite3
-
-def parse_prices(url):
-    r = requests.get(url)
-    soup = BeautifulSoup(r.content, 'html.parser')
-    products = {}
-    for item in soup.find_all('div', class_='product'):
-        name = item.find('h2').text
-        price = float(item.find('span').text.replace('₽',''))
-        products[name] = price
-    return products
-
-conn = sqlite3.connect('prices.db')
-# сохранение в БД...</code></div>
-                        <button class="btn-copy" onclick="copyCode(2)">📋 Копировать</button>
-                    </div>
-                </div>
-
-                <!-- Project 4: Hackintosh -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Hackintosh на AMD Ryzen</h3>
-                        <div class="project-tech">OpenCore • Ryzen 7 5700X3D • RX 6750XT</div>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Успешная установка macOS на AMD-платформе.</strong></p>
-                        <ul class="project-features">
-                            <li>Настройка OpenCore (mikigal/ryzen-hackintosh)</li>
-                            <li>Решение проблем со звуком, драйверами</li>
-                            <li>Конфигурация BIOS/UEFI</li>
-                            <li>Полная функциональность App Store/USB/GPU</li>
-                        </ul>
-                        <div class="project-result">✓ Рабочая macOS на AMD</div>
-                        
-                        <h4 style="margin-top: 1.5rem;">Скрипт бэкапа EFI:</h4>
-                        <div class="code-preview"><code class="language-python">import os
-import shutil
+import json
+import os
+import logging
 from datetime import datetime
 
-EFI_DIR = r'E:\EFI'
-BACKUP_DIR = r'E:\EFI_BAK'
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
-def backup_efi():
-    today = datetime.now().strftime('%Y-%m-%d')
-    dest = os.path.join(BACKUP_DIR, f'EFI_{today}')
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+bot = telebot.TeleBot(BOT_TOKEN)
+
+PRODUCTS_FILE = "products.json"
+USERS_FILE = "users.json"
+
+def load_data(filename):
     try:
-        shutil.copytree(EFI_DIR, dest)
-        print(f'✅ Бэкап EFI: {dest}')
+        if os.path.exists(filename):
+            with open(filename, 'r', encoding='utf-8') as f:
+                return json.load(f)
     except Exception as e:
-        print(f'❌ Ошибка: {e}')
+        logger.error(f"Error loading {filename}: {e}")
+    return {}
 
-backup_efi()</code></div>
-                        <button class="btn-copy" onclick="copyCode(3)">📋 Копировать</button>
+def save_data(filename, data):
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+        logger.info(f"Data saved to {filename}")
+    except Exception as e:
+        logger.error(f"Error saving {filename}: {e}")
+
+products = load_data(PRODUCTS_FILE) or {
+    "p1": {"name": "Python Course", "price": 500},
+    "p2": {"name": "API Integration", "price": 1500},
+    "p3": {"name": "Telegram Bot Template", "price": 1000}
+}
+users = load_data(USERS_FILE) or {}
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    user_id = str(message.chat.id)
+    if user_id not in users:
+        users[user_id] = {
+            "name": message.from_user.first_name,
+            "purchases": [],
+            "balance": 0,
+            "created": datetime.now().isoformat()
+        }
+        save_data(USERS_FILE, users)
+        logger.info(f"New user registered: {user_id}")
+    
+    markup = types.ReplyKeyboardMarkup(row_width=2)
+    btn1 = types.KeyboardButton("Shop")
+    btn2 = types.KeyboardButton("Balance")
+    btn3 = types.KeyboardButton("Orders")
+    markup.add(btn1, btn2, btn3)
+    
+    bot.send_message(
+        message.chat.id,
+        f"Welcome, {message.from_user.first_name}!\\n"
+        f"Browse our digital marketplace.",
+        reply_markup=markup
+    )
+
+@bot.message_handler(func=lambda msg: msg.text == "Shop")
+def show_shop(message):
+    markup = types.InlineKeyboardMarkup()
+    for pid, product in products.items():
+        btn = types.InlineKeyboardButton(
+            f"{product['name']} - {product['price']} RUB",
+            callback_data=f"buy_{pid}"
+        )
+        markup.add(btn)
+    bot.send_message(
+        message.chat.id,
+        "Available products:",
+        reply_markup=markup
+    )
+    logger.info(f"User {message.chat.id} browsed shop")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("buy_"))
+def buy_product(call):
+    pid = call.data.split("_")[1]
+    product = products.get(pid)
+    
+    if not product:
+        bot.answer_callback_query(call.id, "Product not found")
+        return
+    
+    user_id = str(call.from_user.id)
+    users[user_id]["purchases"].append({
+        "product": product["name"],
+        "price": product["price"],
+        "date": datetime.now().isoformat()
+    })
+    save_data(USERS_FILE, users)
+    
+    bot.answer_callback_query(call.id, "Purchase successful")
+    bot.send_message(
+        call.message.chat.id,
+        f"Purchase confirmed: {product['name']}\\n"
+        f"Amount: {product['price']} RUB"
+    )
+    logger.info(f"Purchase: user {user_id} bought {product['name']}")
+
+@bot.message_handler(func=lambda msg: msg.text == "Balance")
+def show_balance(message):
+    user_id = str(message.chat.id)
+    user = users.get(user_id, {})
+    balance = user.get("balance", 0)
+    purchases = len(user.get("purchases", []))
+    bot.send_message(
+        message.chat.id,
+        f"Balance: {balance} RUB\\nTotal orders: {purchases}"
+    )
+
+@bot.message_handler(func=lambda msg: msg.text == "Orders")
+def show_purchases(message):
+    user_id = str(message.chat.id)
+    user = users.get(user_id, {})
+    purchases = user.get("purchases", [])
+    
+    if not purchases:
+        bot.send_message(message.chat.id, "No orders yet")
+        return
+    
+    msg = "Your orders:\\n\\n"
+    total = 0
+    for i, p in enumerate(purchases, 1):
+        msg += f"{i}. {p['product']} - {p['price']} RUB\\n"
+        total += p['price']
+    msg += f"\\nTotal: {total} RUB"
+    bot.send_message(message.chat.id, msg)
+
+if __name__ == "__main__":
+    logger.info("Bot started successfully")
+    if BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
+        logger.error("Please replace BOT_TOKEN with actual token")
+        print("Get token from @BotFather")
+    else:
+        bot.infinity_polling()</code></div>
+                            <button class="btn-copy" onclick="copyCode(0)">Copy Code</button>
+                            <div class="code-meta">
+                                <strong>Installation:</strong> pip install pytelegrambotapi<br>
+                                <strong>Usage:</strong> python telegram_bot.py
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 5: PowerShell -->
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>PowerShell Automation</h3>
-                        <div class="project-tech">PowerShell • WMI • Windows</div>
+                        <h3>Price Monitoring System</h3>
+                        <div class="project-tech">Python • BeautifulSoup • SQLite • Requests</div>
                     </div>
                     <div class="project-body">
-                        <p><strong>Скрипты автоматизации Windows.</strong></p>
+                        <p class="project-description">Real-time marketplace price monitoring with automated alerts and historical data storage in SQLite database.</p>
                         <ul class="project-features">
-                            <li>Автоматическое резервирование</li>
-                            <li>Управление файлами</li>
-                            <li>Мониторинг ресурсов</li>
-                            <li>Email alerts</li>
+                            <li>Web scraping implementation</li>
+                            <li>SQLite database integration</li>
+                            <li>Target price alert system</li>
+                            <li>Price statistics tracking</li>
+                            <li>Retry logic for reliability</li>
                         </ul>
-                        <div class="project-result">✓ Экономия ~20 часов/месяц</div>
+                        <div class="project-result">Result: Saves ~50 hours/month in manual monitoring</div>
                         
-                        <h4 style="margin-top: 1.5rem;">Пример кода:</h4>
-                        <div class="code-preview"><code class="language-powershell">function Backup-Files {
-    $source = "$env:USERPROFILE\Documents"
-    $dest = "D:\Backups\$(Get-Date -Format 'yyyy-MM-dd')"
-    
-    Copy-Item -Path $source -Destination $dest -Recurse
-    Write-Host "✅ Бэкап создан: $dest" -ForegroundColor Green
+                        <div class="code-section">
+                            <h4>Complete Source Code</h4>
+                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
+"""Marketplace Price Monitoring System"""
+import requests
+from bs4 import BeautifulSoup
+import sqlite3
+import logging
+import time
+from datetime import datetime
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+CONFIG = {
+    "url": "https://example-marketplace.com",
+    "check_interval": 300,
+    "max_retries": 3
 }
 
-function Monitor-CPU {
-    $cpu = (Get-WmiObject win32_processor | 
-            Measure-Object -property LoadPercentage -Average).Average
-    Write-Host "CPU: $cpu%" -ForegroundColor Yellow
-    if ($cpu -gt 80) {
-        Write-Host "⚠️  CPU высокая!" -ForegroundColor Red
+def init_database():
+    conn = sqlite3.connect('prices.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS price_history
+                 (id INTEGER PRIMARY KEY,
+                  product_name TEXT,
+                  price REAL,
+                  timestamp TEXT)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS alerts
+                 (id INTEGER PRIMARY KEY,
+                  product_name TEXT,
+                  target_price REAL,
+                  active INTEGER)''')
+    conn.commit()
+    logger.info("Database initialized")
+    return conn
+
+def parse_prices(url):
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
+        products = {}
+        
+        for item in soup.find_all('div', class_='product-item'):
+            try:
+                name = item.find('h2', class_='product-name').text.strip()
+                price_str = item.find('span', class_='price').text
+                price = float(price_str.replace('RUB','').replace(' ',''))
+                products[name] = price
+            except:
+                continue
+        
+        logger.info(f"Loaded {len(products)} products")
+        return products
+    except Exception as e:
+        logger.error(f"Parsing error: {e}")
+        return None
+
+def save_price(conn, product, price):
+    c = conn.cursor()
+    timestamp = datetime.now().isoformat()
+    c.execute('''INSERT INTO price_history
+                 (product_name, price, timestamp)
+                 VALUES (?, ?, ?)''',
+              (product, price, timestamp))
+    conn.commit()
+    logger.info(f"Saved: {product} - {price} RUB")
+
+def check_alerts(conn, product, price):
+    c = conn.cursor()
+    c.execute('''SELECT target_price FROM alerts
+                 WHERE product_name=? AND active=1''',
+              (product,))
+    alert = c.fetchone()
+    
+    if alert and price <= alert[0]:
+        logger.warning(f"ALERT! {product} dropped to {price} RUB")
+        return True
+    return False
+
+def add_alert(conn, product, target_price):
+    c = conn.cursor()
+    c.execute('''INSERT INTO alerts
+                 (product_name, target_price, active)
+                 VALUES (?, ?, ?)''',
+              (product, target_price, 1))
+    conn.commit()
+    logger.info(f"Alert added: {product} at {target_price} RUB")
+
+def show_stats(conn):
+    c = conn.cursor()
+    c.execute('SELECT DISTINCT product_name FROM price_history')
+    products = c.fetchall()
+    
+    print("\\nPrice Statistics:\\n")
+    for (product,) in products:
+        c.execute('''SELECT MIN(price), MAX(price), AVG(price)
+                     FROM price_history WHERE product_name=?''',
+                  (product,))
+        stats = c.fetchone()
+        if stats:
+            print(f"Product: {product}")
+            print(f"  Min: {stats[0]} RUB | Max: {stats[1]} RUB | "
+                  f"Avg: {stats[2]:.2f} RUB\\n")
+
+def monitor_prices():
+    conn = init_database()
+    retry_count = 0
+    
+    logger.info("Monitoring started")
+    
+    while True:
+        try:
+            prices = parse_prices(CONFIG['url'])
+            
+            if prices is None:
+                retry_count += 1
+                if retry_count >= CONFIG['max_retries']:
+                    logger.error("Failed to get prices")
+                    retry_count = 0
+                time.sleep(CONFIG['check_interval'])
+                continue
+            
+            retry_count = 0
+            
+            for product, price in prices.items():
+                save_price(conn, product, price)
+                if check_alerts(conn, product, price):
+                    print(f"ALERT: {product} - {price} RUB")
+            
+            logger.info(f"Check completed: {datetime.now().strftime('%H:%M:%S')}")
+            
+        except KeyboardInterrupt:
+            logger.info("\\nMonitoring stopped")
+            break
+        except Exception as e:
+            logger.error(f"Error: {e}")
+        
+        time.sleep(CONFIG['check_interval'])
+    
+    conn.close()
+
+if __name__ == "__main__":
+    print("Marketplace Price Monitor")
+    print("1. Start monitoring")
+    print("2. Add alert")
+    print("3. Show statistics")
+    
+    choice = input("\\nSelect (1-3): ")
+    conn = init_database()
+    
+    if choice == "1":
+        monitor_prices()
+    elif choice == "2":
+        product = input("Product name: ")
+        price = float(input("Target price (RUB): "))
+        add_alert(conn, product, price)
+    elif choice == "3":
+        show_stats(conn)
+    
+    conn.close()</code></div>
+                            <button class="btn-copy" onclick="copyCode(1)">Copy Code</button>
+                            <div class="code-meta">
+                                <strong>Installation:</strong> pip install requests beautifulsoup4<br>
+                                <strong>Usage:</strong> python price_monitor.py
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>CS2 Marketplace Automation</h3>
+                        <div class="project-tech">Python • Steam Web API • Email • Logging</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Automated trading system for Counter-Strike 2 marketplace with profitability analysis and email reporting.</p>
+                        <ul class="project-features">
+                            <li>Steam API integration</li>
+                            <li>Inventory parsing</li>
+                            <li>Profitability calculation</li>
+                            <li>Email notifications</li>
+                            <li>Retry logic implementation</li>
+                        </ul>
+                        <div class="project-result">Result: +25-30% profit increase through optimization</div>
+                        
+                        <div class="code-section">
+                            <h4>Complete Source Code</h4>
+                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
+"""CS2 Marketplace Automation Bot"""
+import requests
+import smtplib
+import logging
+import time
+from datetime import datetime
+from email.mime.text import MIMEText
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+CONFIG = {
+    "steam_api_key": "YOUR_STEAM_API_KEY",
+    "app_id": 730,
+    "email": "clockerindo@yandex.ru",
+    "email_password": "YOUR_APP_PASSWORD",
+    "smtp_server": "smtp.yandex.ru",
+    "smtp_port": 587,
+    "check_interval": 60
+}
+
+class EmailNotifier:
+    def __init__(self, email, password, smtp_server, smtp_port):
+        self.email = email
+        self.password = password
+        self.smtp_server = smtp_server
+        self.smtp_port = smtp_port
+    
+    def send_email(self, subject, body):
+        try:
+            msg = MIMEText(body, 'plain', 'utf-8')
+            msg['Subject'] = subject
+            msg['From'] = self.email
+            msg['To'] = self.email
+            
+            server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+            server.starttls()
+            server.login(self.email, self.password)
+            server.send_message(msg)
+            server.quit()
+            
+            logger.info(f"Email sent: {subject}")
+            return True
+        except Exception as e:
+            logger.error(f"Email error: {e}")
+            return False
+
+class CS2Bot:
+    def __init__(self, api_key, app_id):
+        self.api_key = api_key
+        self.app_id = app_id
+        self.base_url = "https://api.steampowered.com"
+        self.notifier = EmailNotifier(
+            CONFIG['email'],
+            CONFIG['email_password'],
+            CONFIG['smtp_server'],
+            CONFIG['smtp_port']
+        )
+    
+    def get_inventory(self, user_id, retries=0):
+        try:
+            url = f"{self.base_url}/IEconItems_{self.app_id}/GetUserInventory/v1"
+            params = {"key": self.api_key, "steamid": user_id}
+            
+            response = requests.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            
+            data = response.json()
+            if data.get('result', {}).get('success'):
+                items = data['result'].get('items', [])
+                logger.info(f"Loaded {len(items)} items")
+                return items
+            elif retries < 3:
+                logger.warning(f"Retry ({retries+1}/3)")
+                time.sleep(5)
+                return self.get_inventory(user_id, retries+1)
+            return None
+        except Exception as e:
+            logger.error(f"API error: {e}")
+            return None
+    
+    def get_market_prices(self, items):
+        prices = {}
+        for item in items[:10]:
+            try:
+                name = item.get('market_hash_name', 'Unknown')
+                url = "https://steamcommunity.com/market/priceoverview/"
+                params = {
+                    "appid": self.app_id,
+                    "market_hash_name": name,
+                    "currency": 5
+                }
+                
+                response = requests.get(url, params=params, timeout=10)
+                data = response.json()
+                
+                if data.get('success'):
+                    price_str = data.get('lowest_price', '0')
+                    price = float(price_str.replace('RUB','').replace('\\xa0',''))
+                    prices[name] = price
+                    logger.info(f"{name}: {price} RUB")
+                
+                time.sleep(0.5)
+            except Exception as e:
+                logger.warning(f"Price error for {name}: {e}")
+                continue
+        
+        return prices
+    
+    def analyze_profit(self, prices):
+        total_value = sum(prices.values())
+        profitable = [k for k, v in prices.items() if 100 <= v <= 10000]
+        
+        stats = {
+            "total_items": len(prices),
+            "total_value": total_value,
+            "profitable": len(profitable)
+        }
+        
+        return stats, profitable
+    
+    def start_monitoring(self, user_id):
+        logger.info("CS2 Bot started")
+        logger.info(f"Monitoring: {user_id}")
+        
+        iteration = 0
+        while True:
+            try:
+                iteration += 1
+                logger.info(f"\\nIteration #{iteration}")
+                
+                items = self.get_inventory(user_id)
+                if not items:
+                    logger.warning("No inventory data")
+                    time.sleep(CONFIG['check_interval'])
+                    continue
+                
+                prices = self.get_market_prices(items)
+                stats, profitable = self.analyze_profit(prices)
+                
+                logger.info(f"Items: {stats['total_items']} | "
+                           f"Value: {stats['total_value']} RUB")
+                
+                if profitable:
+                    report = f"""
+CS2 Bot Report
+
+Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+Profitable items found: {len(profitable)}
+
+Items:
+{chr(10).join(f'  • {item}' for item in profitable)}
+
+Statistics:
+  Total items: {stats['total_items']}
+  Total value: {stats['total_value']:.2f} RUB
+  Profitable: {stats['profitable']}
+
+Iteration #{iteration}
+                    """
+                    self.notifier.send_email(
+                        "CS2 Bot - Profitable Items",
+                        report
+                    )
+                
+            except KeyboardInterrupt:
+                logger.info("\\nBot stopped")
+                break
+            except Exception as e:
+                logger.error(f"Error: {e}")
+            
+            logger.info(f"Next check in {CONFIG['check_interval']} seconds")
+            time.sleep(CONFIG['check_interval'])
+
+if __name__ == "__main__":
+    logger.info("CS2 Marketplace Bot")
+    
+    if CONFIG['steam_api_key'] == "YOUR_STEAM_API_KEY":
+        logger.error("Replace YOUR_STEAM_API_KEY")
+        print("Get key: https://steamcommunity.com/dev/apikey")
+        exit(1)
+    
+    bot = CS2Bot(CONFIG['steam_api_key'], CONFIG['app_id'])
+    user_id = input("Enter Steam ID: ").strip()
+    
+    if user_id:
+        bot.start_monitoring(user_id)</code></div>
+                            <button class="btn-copy" onclick="copyCode(2)">Copy Code</button>
+                            <div class="code-meta">
+                                <strong>Installation:</strong> pip install requests<br>
+                                <strong>Steam API Key:</strong> https://steamcommunity.com/dev/apikey
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Hackintosh on AMD Ryzen</h3>
+                        <div class="project-tech">OpenCore • Ryzen 7 5700X3D • RX 6750XT • macOS</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Successfully configured Hackintosh on AMD platform with full functionality of App Store, USB, audio, and GPU acceleration.</p>
+                        <ul class="project-features">
+                            <li>OpenCore configuration (mikigal/ryzen-hackintosh)</li>
+                            <li>SSDT and driver troubleshooting</li>
+                            <li>BIOS/UEFI optimization</li>
+                            <li>App Store, USB, Audio functional</li>
+                            <li>AMD RX 6750XT full support</li>
+                        </ul>
+                        <div class="project-result">Result: Fully operational macOS on AMD hardware</div>
+                        
+                        <div class="code-section">
+                            <h4>EFI Backup Automation Script</h4>
+                            <div class="code-preview"><code class="language-python">#!/usr/bin/env python3
+"""Hackintosh EFI Backup Automation"""
+import os
+import shutil
+import logging
+from datetime import datetime
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('efi_backup.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+EFI_DIR = r'E:\\EFI'
+BACKUP_DIR = r'E:\\EFI_BACKUPS'
+
+def backup_efi():
+    """Create EFI backup"""
+    try:
+        if not os.path.exists(EFI_DIR):
+            logger.error(f"EFI directory not found: {EFI_DIR}")
+            return False
+        
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        
+        today = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        backup_name = f'EFI_backup_{today}'
+        dest = os.path.join(BACKUP_DIR, backup_name)
+        
+        logger.info(f"Starting EFI backup...")
+        shutil.copytree(EFI_DIR, dest)
+        
+        total_size = sum(os.path.getsize(os.path.join(dirpath, filename))
+                        for dirpath, _, filenames in os.walk(dest)
+                        for filename in filenames)
+        size_mb = total_size / (1024 * 1024)
+        
+        logger.info(f"Backup created: {dest}")
+        logger.info(f"Size: {size_mb:.2f} MB")
+        
+        cleanup_old_backups(5)
+        
+        return True
+        
+    except Exception as e:
+        logger.error(f"Backup error: {e}")
+        return False
+
+def cleanup_old_backups(keep_count=5):
+    """Remove old backups (keep only latest)"""
+    try:
+        backups = []
+        for item in os.listdir(BACKUP_DIR):
+            path = os.path.join(BACKUP_DIR, item)
+            if os.path.isdir(path) and item.startswith('EFI_backup'):
+                backups.append((path, os.path.getctime(path)))
+        
+        backups.sort(key=lambda x: x[1], reverse=True)
+        
+        for path, _ in backups[keep_count:]:
+            shutil.rmtree(path)
+            logger.info(f"Removed old backup: {os.path.basename(path)}")
+        
+    except Exception as e:
+        logger.warning(f"Cleanup error: {e}")
+
+def restore_efi(backup_name):
+    """Restore EFI from backup"""
+    try:
+        backup_path = os.path.join(BACKUP_DIR, backup_name)
+        
+        if not os.path.exists(backup_path):
+            logger.error(f"Backup not found: {backup_name}")
+            return False
+        
+        logger.warning("WARNING: Restore will overwrite current EFI!")
+        confirm = input("Continue? (yes/no): ")
+        
+        if confirm.lower() != 'yes':
+            logger.info("Restore cancelled")
+            return False
+        
+        if os.path.exists(EFI_DIR):
+            shutil.rmtree(EFI_DIR)
+        
+        shutil.copytree(backup_path, EFI_DIR)
+        
+        logger.info(f"EFI restored from: {backup_name}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Restore error: {e}")
+        return False
+
+def list_backups():
+    """List all available backups"""
+    try:
+        backups = []
+        for item in os.listdir(BACKUP_DIR):
+            path = os.path.join(BACKUP_DIR, item)
+            if os.path.isdir(path) and item.startswith('EFI_backup'):
+                size = sum(os.path.getsize(os.path.join(dp, f))
+                          for dp, _, fns in os.walk(path)
+                          for f in fns) / (1024 * 1024)
+                date = datetime.fromtimestamp(os.path.getctime(path))
+                backups.append((item, date, size))
+        
+        backups.sort(key=lambda x: x[1], reverse=True)
+        
+        print("\\nAvailable EFI Backups:\\n")
+        for name, date, size in backups:
+            print(f"Backup: {name}")
+            print(f"  Date: {date.strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"  Size: {size:.2f} MB\\n")
+        
+        return backups
+        
+    except Exception as e:
+        logger.error(f"List error: {e}")
+        return []
+
+def main():
+    print("Hackintosh EFI Backup Tool")
+    print("=" * 50)
+    print("1. Create EFI backup")
+    print("2. Restore EFI")
+    print("3. List backups")
+    print("4. Exit")
+    print("=" * 50)
+    
+    choice = input("\\nSelect (1-4): ")
+    
+    if choice == "1":
+        backup_efi()
+    elif choice == "2":
+        backups = list_backups()
+        if backups:
+            name = input("\\nBackup name to restore: ")
+            restore_efi(name)
+    elif choice == "3":
+        list_backups()
+    elif choice == "4":
+        print("Exit")
+    else:
+        print("Invalid choice")
+
+if __name__ == "__main__":
+    main()</code></div>
+                            <button class="btn-copy" onclick="copyCode(3)">Copy Code</button>
+                            <div class="code-meta">
+                                <strong>Usage:</strong> python hackintosh_efi_backup.py<br>
+                                <strong>Guide:</strong> github.com/mikigal/ryzen-hackintosh
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>PowerShell Automation Suite</h3>
+                        <div class="project-tech">PowerShell • WMI • Task Scheduler • Email</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Comprehensive Windows automation scripts: file backups, resource monitoring, temporary file cleanup with email alerts.</p>
+                        <ul class="project-features">
+                            <li>Automated file backup system</li>
+                            <li>CPU/RAM/Disk monitoring</li>
+                            <li>Email alerts on thresholds</li>
+                            <li>Temporary file cleanup</li>
+                            <li>Color-coded console output</li>
+                        </ul>
+                        <div class="project-result">Result: Saves ~20 hours/month on maintenance</div>
+                        
+                        <div class="code-section">
+                            <h4>Complete Script Suite</h4>
+                            <div class="code-preview"><code class="language-powershell"># PowerShell Automation Suite
+# Execution: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# Run: .\\automation.ps1
+
+function Backup-ImportantFiles {
+    param(
+        [string]$Source = "$env:USERPROFILE\\Documents",
+        [string]$BackupPath = "D:\\Backups"
+    )
+    
+    $BackupName = "backup_$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')"
+    $Destination = Join-Path $BackupPath $BackupName
+    
+    Write-Host "Starting backup..." -ForegroundColor Cyan
+    
+    try {
+        if (-not (Test-Path $BackupPath)) {
+            New-Item -ItemType Directory -Path $BackupPath -Force | Out-Null
+            Write-Host "Created backup directory: $BackupPath" -ForegroundColor Green
+        }
+        
+        Copy-Item -Path $Source -Destination $Destination -Recurse -Force
+        
+        $size = (Get-ChildItem $Destination -Recurse | 
+                 Measure-Object -Property Length -Sum).Sum / 1MB
+        
+        Write-Host "Backup created: $Destination" -ForegroundColor Green
+        Write-Host "Size: $([math]::Round($size, 2)) MB" -ForegroundColor Green
+        
+        Send-EmailAlert "Backup successful" `
+            "Files backed up to $Destination"
+    }
+    catch {
+        Write-Host "Error: $_" -ForegroundColor Red
+        Send-EmailAlert "Backup error" "Error: $_"
     }
 }
 
-Backup-Files
-Monitor-CPU</code></div>
-                        <button class="btn-copy" onclick="copyCode(4)">📋 Копировать</button>
+function Monitor-SystemResources {
+    param(
+        [int]$CheckInterval = 60,
+        [int]$CpuThreshold = 80,
+        [int]$RamThreshold = 85
+    )
+    
+    Write-Host "System monitoring started" -ForegroundColor Cyan
+    Write-Host "Interval: $CheckInterval seconds" -ForegroundColor Cyan
+    
+    while ($true) {
+        $cpu = (Get-WmiObject win32_processor | 
+                Measure-Object -property LoadPercentage -Average).Average
+        
+        $os = Get-WmiObject win32_operatingsystem
+        $mem = [math]::Round(($os.TotalVisibleMemorySize - 
+                             $os.FreePhysicalMemory) / 
+                             $os.TotalVisibleMemorySize * 100, 2)
+        
+        $time = Get-Date -Format 'HH:mm:ss'
+        Write-Host "$time | CPU: $cpu% | RAM: $mem%" -ForegroundColor Yellow
+        
+        if ($cpu -gt $CpuThreshold) {
+            Write-Host "WARNING: CPU exceeded: $cpu% > $CpuThreshold%" `
+                -ForegroundColor Red
+            Send-EmailAlert "High CPU usage" `
+                "CPU: $cpu%, RAM: $mem%"
+        }
+        
+        if ($mem -gt $RamThreshold) {
+            Write-Host "WARNING: RAM exceeded: $mem% > $RamThreshold%" `
+                -ForegroundColor Red
+            Send-EmailAlert "High RAM usage" `
+                "CPU: $cpu%, RAM: $mem%"
+        }
+        
+        Start-Sleep -Seconds $CheckInterval
+    }
+}
+
+function Clean-TemporaryFiles {
+    Write-Host "Cleaning temporary files..." -ForegroundColor Cyan
+    
+    $PathsToClean = @(
+        "$env:TEMP",
+        "$env:SystemRoot\\Temp",
+        "$env:LOCALAPPDATA\\Temp"
+    )
+    
+    $totalSize = 0
+    $deletedFiles = 0
+    
+    foreach ($path in $PathsToClean) {
+        if (Test-Path $path) {
+            try {
+                $items = Get-ChildItem -Path $path -Recurse -Force `
+                         -ErrorAction SilentlyContinue
+                
+                foreach ($item in $items) {
+                    try {
+                        $totalSize += $item.Length
+                        Remove-Item -Path $item.FullName -Force -Recurse `
+                                    -ErrorAction SilentlyContinue
+                        $deletedFiles++
+                    }
+                    catch { }
+                }
+            }
+            catch {
+                Write-Host "Could not clean: $path" `
+                    -ForegroundColor Yellow
+            }
+        }
+    }
+    
+    $sizeMB = [math]::Round($totalSize / 1MB, 2)
+    Write-Host "Cleanup completed" -ForegroundColor Green
+    Write-Host "  Files deleted: $deletedFiles" -ForegroundColor Green
+    Write-Host "  Space freed: $sizeMB MB" -ForegroundColor Green
+}
+
+function Get-SystemInformation {
+    Write-Host "\\nSystem Information:" -ForegroundColor Cyan
+    Write-Host "=" * 50
+    
+    $os = Get-WmiObject win32_operatingsystem
+    $cpu = Get-WmiObject win32_processor
+    $ram = $os.TotalVisibleMemorySize / 1MB / 1024
+    
+    Write-Host "OS: $($os.Caption)" -ForegroundColor Yellow
+    Write-Host "Version: $($os.Version)" -ForegroundColor Yellow
+    Write-Host "CPU: $($cpu.Name)" -ForegroundColor Yellow
+    Write-Host "Cores: $($cpu.NumberOfCores)" -ForegroundColor Yellow
+    Write-Host "RAM: $([math]::Round($ram, 2)) GB" -ForegroundColor Yellow
+    Write-Host "Computer: $env:COMPUTERNAME" -ForegroundColor Yellow
+    Write-Host "User: $env:USERNAME" -ForegroundColor Yellow
+    Write-Host "=" * 50
+}
+
+function Send-EmailAlert {
+    param(
+        [string]$Subject,
+        [string]$Body
+    )
+    
+    $EmailParams = @{
+        From       = "clockerindo@yandex.ru"
+        To         = "clockerindo@yandex.ru"
+        Subject    = $Subject
+        Body       = $Body
+        SmtpServer = "smtp.yandex.ru"
+        Port       = 587
+        UseSsl     = $true
+        Credential = (New-Object System.Management.Automation.PSCredential (
+            "clockerindo@yandex.ru",
+            (ConvertTo-SecureString "YOUR_PASSWORD" -AsPlainText -Force)
+        ))
+    }
+    
+    try {
+        Send-MailMessage @EmailParams
+        Write-Host "Email sent: $Subject" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "Email error: $_" -ForegroundColor Red
+    }
+}
+
+function Show-Menu {
+    Write-Host "\\nPowerShell Automation Tools" -ForegroundColor Cyan
+    Write-Host "=" * 50
+    Write-Host "1. File backup"
+    Write-Host "2. Resource monitoring"
+    Write-Host "3. Cleanup temporary files"
+    Write-Host "4. System information"
+    Write-Host "5. Exit"
+    Write-Host "=" * 50
+}
+
+# Main loop
+while ($true) {
+    Show-Menu
+    $choice = Read-Host "Select action (1-5)"
+    
+    switch ($choice) {
+        "1" { Backup-ImportantFiles }
+        "2" { Monitor-SystemResources }
+        "3" { Clean-TemporaryFiles }
+        "4" { Get-SystemInformation }
+        "5" {
+            Write-Host "Goodbye" -ForegroundColor Green
+            exit
+        }
+        default {
+            Write-Host "Invalid choice" -ForegroundColor Red
+        }
+    }
+}</code></div>
+                            <button class="btn-copy" onclick="copyCode(4)">Copy Code</button>
+                            <div class="code-meta">
+                                <strong>Execution:</strong> Set-ExecutionPolicy RemoteSigned<br>
+                                <strong>Run:</strong> .\\automation.ps1
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -440,22 +1437,36 @@ Monitor-CPU</code></div>
         </div>
     </section>
 
-    <section id="contact" class="light-bg">
+    <section id="contact">
         <div class="container">
-            <h2>Свяжитесь со мной</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>📧 <strong>Email:</strong> <a href="mailto:clockerindo@yandex.ru">clockerindo@yandex.ru</a></p>
-                    <p>💬 <strong>Telegram:</strong> <a href="https://t.me/remontsuri" target="_blank">@remontsuri</a></p>
-                    <p>🐙 <strong>GitHub:</strong> <a href="https://github.com/remontsuri" target="_blank">github.com/remontsuri</a></p>
-                    <p>📍 <strong>Локация:</strong> Санкт-Петербург | Удалённо</p>
+            <h2>Contact Information</h2>
+            <div class="contact-section">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <a href="mailto:clockerindo@yandex.ru">clockerindo@yandex.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telegram</strong>
+                        <a href="https://t.me/remontsuri" target="_blank">@remontsuri</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub</strong>
+                        <a href="https://github.com/remontsuri" target="_blank">github.com/remontsuri</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Location</strong>
+                        Saint Petersburg | Remote
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 remontsuri | Все программы готовы к использованию</p>
+        <div class="container">
+            <p>&copy; 2025 All projects are production-ready and available for review</p>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -468,13 +1479,13 @@ Monitor-CPU</code></div>
         const savedTheme = localStorage.getItem('theme') || 'light';
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
-            themeToggle.textContent = '☀️';
+            themeToggle.textContent = '◑';
         }
         
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const isDark = body.classList.contains('dark-mode');
-            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            themeToggle.textContent = isDark ? '◑' : '◐';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
         
@@ -483,9 +1494,10 @@ Monitor-CPU</code></div>
             const code = codes[index].textContent;
             navigator.clipboard.writeText(code).then(() => {
                 const btns = document.querySelectorAll('.btn-copy');
-                btns[index].textContent = '✅ Скопировано!';
+                const originalText = btns[index].textContent;
+                btns[index].textContent = 'Copied';
                 setTimeout(() => {
-                    btns[index].textContent = '📋 Копировать';
+                    btns[index].textContent = originalText;
                 }, 2000);
             });
         }
@@ -493,7 +1505,9 @@ Monitor-CPU</code></div>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
