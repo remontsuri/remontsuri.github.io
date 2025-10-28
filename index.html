@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио - remontsuri</title>
+    <title>Портфолио с примерами кода - remontsuri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma; background: #fff; color: #1e293b; line-height: 1.6; }
         body.dark { background: #0f172a; color: #e2e8f0; }
-        header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 1.5rem; position: sticky; top: 0; z-index: 1000; }
+        header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 1.5rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
         .logo { font-size: 1.5rem; font-weight: bold; }
         .nav { display: flex; gap: 1.5rem; }
         .nav a { color: white; text-decoration: none; transition: 0.3s; }
         .nav a:hover { color: #06b6d4; }
-        .theme-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 5px; cursor: pointer; }
+        .theme-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 5px; cursor: pointer; font-size: 1rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 5rem 2rem; text-align: center; }
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
@@ -23,7 +25,7 @@
         body.dark section.light { background: #1e293b; }
         h2 { color: #1e3a8a; font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
         body.dark h2 { color: #06b6d4; }
-        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
         .card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
         body.dark .card { background: #1e293b; }
         .card:hover { transform: translateY(-8px); }
@@ -34,17 +36,14 @@
         .features li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; }
         .features li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: bold; }
         .result { background: rgba(16,185,129,0.1); border-left: 4px solid #10b981; padding: 1rem; margin-top: 1rem; border-radius: 4px; font-size: 0.9rem; }
-        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .skill-box { background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6; }
-        body.dark .skill-box { background: #1e293b; }
-        .skill-box h4 { margin-bottom: 0.8rem; }
-        .skill-box ul { list-style: none; }
-        .skill-box li { padding: 0.3rem 0 0.3rem 1.2rem; position: relative; }
-        .skill-box li::before { content: '→'; position: absolute; left: 0; color: #06b6d4; }
-        .contact { text-align: center; margin: 2rem 0; }
+        .code-preview { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; max-height: 250px; overflow-y: auto; font-size: 0.85rem; }
+        body.dark .code-preview { background: #0f172a; }
+        .code-preview code { font-family: 'Courier New', monospace; }
+        .btn { background: #3b82f6; color: white; padding: 0.7rem 1.3rem; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 1rem; display: inline-block; text-decoration: none; }
+        .btn:hover { background: #06b6d4; transform: translateY(-2px); }
+        .btn-copy { background: #10b981; font-size: 0.85rem; padding: 0.5rem 1rem; margin-left: 0.5rem; }
         footer { background: #0f172a; color: white; text-align: center; padding: 2rem; }
-        .badge { background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.8rem; margin: 0.2rem; display: inline-block; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } h2 { font-size: 1.7rem; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
@@ -52,8 +51,7 @@
         <div class="header-content">
             <div class="logo">💻 remontsuri</div>
             <nav class="nav">
-                <a href="#projects">Проекты</a>
-                <a href="#skills">Навыки</a>
+                <a href="#projects">Проекты + Код</a>
                 <a href="#contact">Контакты</a>
             </nav>
             <button class="theme-btn" onclick="toggleTheme()">🌙</button>
@@ -62,17 +60,18 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Специалист по автоматизации</h1>
+            <h1>Портфолио с примерами кода</h1>
             <p style="font-size: 1.2rem;">🐍 Python • 🤖 Telegram Боты • 🔌 API • ⚙️ PowerShell</p>
-            <p style="font-size: 1rem; opacity: 0.85; margin-top: 1rem;">Production-ready приложения для автоматизации процессов</p>
+            <p style="font-size: 1rem; opacity: 0.85; margin-top: 1rem;">Production-ready приложения + исходный код</p>
         </div>
     </section>
 
     <section id="projects" class="light">
         <div class="container">
-            <h2>🚀 Реализованные проекты</h2>
+            <h2>🚀 Проекты с примерами кода</h2>
             
             <div class="projects">
+                <!-- Project 1: Telegram Bot -->
                 <div class="card">
                     <h3>🤖 Telegram-бот монетизации</h3>
                     <div class="tech">Python • Telebot • E-commerce • Email</div>
@@ -81,12 +80,58 @@
                         <li>Каталог товаров с ценами</li>
                         <li>Интеграция платёжных систем</li>
                         <li>Управление промокодами до 50%</li>
-                        <li>Email уведомления</li>
-                        <li>Логирование операций</li>
+                        <li>Логирование + обработка ошибок</li>
                     </ul>
-                    <div class="result">📊 Автоматизировано 100% обработки заказов. Потенциал +40% продаж.</div>
+                    <div class="result">📊 Автоматизировано 100% обработки заказов</div>
+                    
+                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
+                    <div class="code-preview"><code class="language-python">import telebot
+from telebot import types
+import json
+import logging
+
+BOT_TOKEN = "YOUR_BOT_TOKEN"
+bot = telebot.TeleBot(BOT_TOKEN)
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+products = {
+    "product_1": {"name": "Курс Python", "price": 500},
+    "product_2": {"name": "API Integration", "price": 1500}
+}
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.ReplyKeyboardMarkup(row_width=2)
+    btn1 = types.KeyboardButton("🛒 Магазин")
+    btn2 = types.KeyboardButton("💰 Баланс")
+    markup.add(btn1, btn2)
+    
+    bot.send_message(message.chat.id, 
+        f"🎉 Привет, {message.from_user.first_name}!",
+        reply_markup=markup)
+    logger.info(f"Пользователь {message.chat.id} запустил бота")
+
+@bot.message_handler(func=lambda msg: msg.text == "🛒 Магазин")
+def show_shop(message):
+    markup = types.InlineKeyboardMarkup()
+    for pid, product in products.items():
+        btn = types.InlineKeyboardButton(
+            f"{product['name']} - {product['price']}₽",
+            callback_data=f"buy_{pid}"
+        )
+        markup.add(btn)
+    bot.send_message(message.chat.id, "📦 Товары:", reply_markup=markup)
+
+if __name__ == "__main__":
+    logger.info("🤖 Бот запущен")
+    bot.infinity_polling()</code></div>
+                    <button class="btn btn-copy" onclick="copyCode(this, 0)">📋 Копировать код</button>
                 </div>
 
+                <!-- Project 2: Price Monitor -->
                 <div class="card">
                     <h3>📊 Монитор цен маркетплейсов</h3>
                     <div class="tech">Python • BeautifulSoup • SQLite • Email</div>
@@ -94,150 +139,287 @@
                     <ul class="features">
                         <li>Парсинг цен с маркетплейсов</li>
                         <li>SQLite база данных</li>
-                        <li>Alert при целевой цене</li>
                         <li>Email уведомления</li>
-                        <li>Статистика цен</li>
+                        <li>Retry-логика при ошибках</li>
                     </ul>
-                    <div class="result">⏱️ Экономия ~50 часов/месяц. Никогда не пропустишь выгодное предложение.</div>
+                    <div class="result">⏱️ Экономия ~50 часов/месяц</div>
+                    
+                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
+                    <div class="code-preview"><code class="language-python">import requests
+from bs4 import BeautifulSoup
+import sqlite3
+import logging
+from datetime import datetime
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def init_database():
+    conn = sqlite3.connect('prices.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS price_history
+                 (id INTEGER PRIMARY KEY, 
+                  product_name TEXT, 
+                  price REAL, 
+                  timestamp TEXT)''')
+    conn.commit()
+    return conn
+
+def parse_prices(url):
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        response = requests.get(url, headers=headers, timeout=10)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        products = {}
+        
+        for item in soup.find_all('div', class_='product'):
+            name = item.find('h2').text.strip()
+            price = float(item.find('span', class_='price').text
+                         .replace('₽', '').strip())
+            products[name] = price
+            
+        logger.info(f"✅ Загружено {len(products)} товаров")
+        return products
+    except Exception as e:
+        logger.error(f"❌ Ошибка парсинга: {e}")
+        return None
+
+def save_price(conn, product, price):
+    c = conn.cursor()
+    c.execute('''INSERT INTO price_history 
+                 (product_name, price, timestamp) 
+                 VALUES (?, ?, ?)''',
+              (product, price, datetime.now().isoformat()))
+    conn.commit()
+    logger.info(f"💾 Сохранено: {product} - {price}₽")
+
+def monitor():
+    conn = init_database()
+    while True:
+        prices = parse_prices("https://example.com")
+        if prices:
+            for product, price in prices.items():
+                save_price(conn, product, price)
+        time.sleep(300)  # Проверка каждые 5 минут
+
+if __name__ == "__main__":
+    logger.info("📊 Монитор цен запущен")
+    monitor()</code></div>
+                    <button class="btn btn-copy" onclick="copyCode(this, 1)">📋 Копировать код</button>
                 </div>
 
+                <!-- Project 3: CS2 Bot -->
                 <div class="card">
                     <h3>🎮 CS2 Marketplace Bot</h3>
-                    <div class="tech">Python • Steam API • Requests • Email</div>
+                    <div class="tech">Python • Steam API • Email</div>
                     <p>Автоматизация торговли на маркетплейсе CS2 с анализом прибыльности.</p>
                     <ul class="features">
                         <li>Steam Web API интеграция</li>
-                        <li>Парсинг инвентаря</li>
                         <li>Расчёт прибыльности</li>
                         <li>Email отчёты</li>
                         <li>Обработка ошибок API</li>
                     </ul>
-                    <div class="result">💰 Экономия ~100 часов/месяц. +25-30% прибыли.</div>
+                    <div class="result">💰 +25-30% прибыли</div>
+                    
+                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
+                    <div class="code-preview"><code class="language-python">import requests
+import smtplib
+from email.mime.text import MIMEText
+import logging
+
+logger = logging.getLogger(__name__)
+
+CONFIG = {
+    "steam_api_key": "YOUR_API_KEY",
+    "app_id": 730,
+    "email": "clockerindo@yandex.ru"
+}
+
+class EmailNotifier:
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
+    
+    def send_report(self, subject, body):
+        msg = MIMEText(body, 'plain', 'utf-8')
+        msg['Subject'] = subject
+        msg['From'] = self.email
+        msg['To'] = self.email
+        
+        server = smtplib.SMTP('smtp.yandex.ru', 587)
+        server.starttls()
+        server.login(self.email, self.password)
+        server.send_message(msg)
+        server.quit()
+        logger.info(f"✉️  Email отправлен: {subject}")
+
+class CS2Bot:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.notifier = EmailNotifier(CONFIG['email'], "password")
+    
+    def get_inventory(self, user_id):
+        url = f"https://api.steampowered.com/IEconItems_730/GetUserInventory/v1"
+        params = {"key": self.api_key, "steamid": user_id}
+        
+        response = requests.get(url, params=params)
+        data = response.json()
+        
+        if data.get('result', {}).get('success'):
+            items = data['result'].get('items', [])
+            logger.info(f"✅ Загружено {len(items)} предметов")
+            return items
+        return None
+    
+    def analyze_profit(self, items):
+        total_value = sum(item.get('price', 0) for item in items)
+        
+        report = f"""
+CS2 Bot - Отчёт
+Загружено предметов: {len(items)}
+Общая стоимость: {total_value}₽
+        """
+        self.notifier.send_report("CS2 Bot Report", report)
+
+if __name__ == "__main__":
+    bot = CS2Bot(CONFIG['steam_api_key'])
+    items = bot.get_inventory("YOUR_STEAM_ID")
+    if items:
+        bot.analyze_profit(items)</code></div>
+                    <button class="btn btn-copy" onclick="copyCode(this, 2)">📋 Копировать код</button>
                 </div>
 
+                <!-- Project 4: PowerShell -->
                 <div class="card">
                     <h3>⚙️ PowerShell Automation</h3>
                     <div class="tech">PowerShell • WMI • Task Scheduler</div>
                     <p>Автоматизация Windows: резервные копии, мониторинг, очистка.</p>
                     <ul class="features">
-                        <li>Автоматическое резервное копирование</li>
+                        <li>Резервное копирование файлов</li>
                         <li>Мониторинг CPU/RAM/Disk</li>
-                        <li>Email при превышении порогов</li>
-                        <li>Очистка временных файлов</li>
-                        <li>Логирование операций</li>
+                        <li>Email alerts</li>
+                        <li>Цветной вывод</li>
                     </ul>
-                    <div class="result">⏱️ Экономия ~20 часов/месяц. Автоматическая защита данных.</div>
+                    <div class="result">⏱️ Экономия ~20 часов/месяц</div>
+                    
+                    <h4 style="margin-top: 1.5rem; color: #3b82f6;">Пример кода:</h4>
+                    <div class="code-preview"><code class="language-powershell"># PowerShell Automation Script
+
+function Backup-Files {
+    param(
+        [string]$Source = "$env:USERPROFILE\Documents",
+        [string]$Backup = "D:\Backups"
+    )
+    
+    $BackupName = "backup_$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')"
+    $BackupPath = Join-Path $Backup $BackupName
+    
+    Write-Host "📦 Начало резервного копирования..." -ForegroundColor Cyan
+    
+    try {
+        Copy-Item -Path $Source -Destination $BackupPath -Recurse -Force
+        Write-Host "✅ Резервная копия создана: $BackupPath" -ForegroundColor Green
+        
+        # Отправка email
+        Send-EmailNotification "Резервная копия успешно создана" `
+            "Файлы скопированы в $BackupPath"
+    }
+    catch {
+        Write-Host "❌ Ошибка: $_" -ForegroundColor Red
+    }
+}
+
+function Monitor-System {
+    Write-Host "📊 Мониторинг системы..." -ForegroundColor Cyan
+    
+    $cpu = (Get-WmiObject win32_processor | 
+            Measure-Object -property LoadPercentage -Average).Average
+    $mem = (Get-WmiObject win32_operatingsystem | 
+            Select-Object @{Name="Memory"; Expression={
+                [math]::Round(($_.TotalVisibleMemorySize - 
+                $_.FreePhysicalMemory) / 
+                $_.TotalVisibleMemorySize * 100)
+            }}).Memory
+    
+    Write-Host "CPU: $cpu% | RAM: $mem%" -ForegroundColor Yellow
+    
+    if ($cpu -gt 80) {
+        Write-Host "⚠️  CPU высокая загрузка!" -ForegroundColor Red
+        Send-EmailNotification "CPU Alert" "CPU: $cpu%"
+    }
+}
+
+function Clean-TempFiles {
+    Write-Host "🧹 Очистка временных файлов..." -ForegroundColor Cyan
+    
+    $paths = @("$env:TEMP", "$env:SystemRoot\Temp")
+    $totalSize = 0
+    
+    foreach ($path in $paths) {
+        $items = Get-ChildItem -Path $path -Recurse -Force `
+                 -ErrorAction SilentlyContinue
+        foreach ($item in $items) {
+            $totalSize += $item.Length
+            Remove-Item $item.FullName -Force -ErrorAction SilentlyContinue
+        }
+    }
+    
+    $sizeMB = [math]::Round($totalSize / 1MB, 2)
+    Write-Host "✅ Очищено: $sizeMB MB" -ForegroundColor Green
+}
+
+# Запуск
+Backup-Files
+Monitor-System
+Clean-TempFiles</code></div>
+                    <button class="btn btn-copy" onclick="copyCode(this, 3)">📋 Копировать код</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2>🔧 Технический стек</h2>
-            
-            <div class="skills">
-                <div class="skill-box">
-                    <h4>🐍 Языки</h4>
-                    <ul>
-                        <li>Python 3.11+ (Advanced)</li>
-                        <li>PowerShell (Advanced)</li>
-                        <li>HTML/CSS/JavaScript</li>
-                        <li>Bash</li>
-                    </ul>
-                </div>
-
-                <div class="skill-box">
-                    <h4>🔌 API & Интеграции</h4>
-                    <ul>
-                        <li>Telegram Bot API</li>
-                        <li>Steam Web API</li>
-                        <li>REST API</li>
-                        <li>Web Scraping</li>
-                    </ul>
-                </div>
-
-                <div class="skill-box">
-                    <h4>💾 Базы данных</h4>
-                    <ul>
-                        <li>SQLite3</li>
-                        <li>JSON Storage</li>
-                        <li>CSV Processing</li>
-                    </ul>
-                </div>
-
-                <div class="skill-box">
-                    <h4>🛠 Инструменты</h4>
-                    <ul>
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>Postman</li>
-                        <li>Logging & Debugging</li>
-                    </ul>
-                </div>
-
-                <div class="skill-box">
-                    <h4>💼 Компетенции</h4>
-                    <ul>
-                        <li>Разработка ботов</li>
-                        <li>API интеграция</li>
-                        <li>Автоматизация систем</li>
-                        <li>Обработка ошибок</li>
-                    </ul>
-                </div>
-
-                <div class="skill-box">
-                    <h4>📊 Уровни</h4>
-                    <ul>
-                        <li>Python - ⭐⭐⭐⭐</li>
-                        <li>PowerShell - ⭐⭐⭐⭐</li>
-                        <li>API Integration - ⭐⭐⭐⭐</li>
-                        <li>Git - ⭐⭐⭐</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="light">
+    <section id="contact">
         <div class="container">
             <h2>📞 Контакты</h2>
-            
-            <div class="contact">
-                <p style="margin-bottom: 2rem;"><strong>Статус:</strong> Ищу работу Junior Backend Developer / Системный администратор</p>
-                
-                <div style="margin-bottom: 2rem;">
-                    <span class="badge">Python</span>
-                    <span class="badge">Telegram Bot API</span>
-                    <span class="badge">API Integration</span>
-                    <span class="badge">PowerShell</span>
-                    <span class="badge">Automation</span>
-                </div>
-                
+            <div style="text-align: center; margin-top: 2rem;">
                 <p style="margin-bottom: 1rem;"><strong>📧 Email:</strong> <a href="mailto:clockerindo@yandex.ru" style="color: #3b82f6;">clockerindo@yandex.ru</a></p>
                 <p style="margin-bottom: 1rem;"><strong>💬 Telegram:</strong> <a href="https://t.me/remontsuri" target="_blank" style="color: #3b82f6;">@remontsuri</a></p>
                 <p style="margin-bottom: 1rem;"><strong>🐙 GitHub:</strong> <a href="https://github.com/remontsuri" target="_blank" style="color: #3b82f6;">github.com/remontsuri</a></p>
-                <p><strong>📍 Локация:</strong> Санкт-Петербург | <strong>Формат:</strong> Удалённо</p>
-                
-                <p style="margin-top: 2rem; font-size: 0.9rem; color: #64748b;">✅ Готовность: 1 неделя | Зарплата: от 80 000 ₽</p>
+                <p style="margin-top: 2rem; color: #64748b;">📍 Санкт-Петербург | Удалённо | Зарплата: от 80 000 ₽</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 remontsuri | Production-ready приложения для автоматизации</p>
+        <p>&copy; 2025 remontsuri | Production-ready приложения + исходный код</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
+        hljs.highlightAll();
+        
         function toggleTheme() {
             document.body.classList.toggle('dark');
             localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
             document.querySelector('.theme-btn').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
         }
+        
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
             document.querySelector('.theme-btn').textContent = '☀️';
         }
+        
+        function copyCode(btn, index) {
+            const codeBlocks = document.querySelectorAll('.code-preview code');
+            const code = codeBlocks[index].textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '✅ Скопировано!';
+                setTimeout(() => {
+                    btn.textContent = '📋 Копировать код';
+                }, 2000);
+            });
+        }
+        
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function (e) {
                 e.preventDefault();
