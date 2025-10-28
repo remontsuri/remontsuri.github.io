@@ -1,8 +1,139 @@
-<ul id="navMenu">
-    <a href="#about">Обо мне</a>
-    <a href="#skills">Навыки</a>
-    <a href="#projects">Проекты</a>
-    <a href="programs.html">Программы</a>
-    <a href="#experience">Опыт</a>
-    <a href="#contact">Контакты</a>
-</ul>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Ремонт Сури</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        header { background: #2c3e50; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav ul { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #3498db; }
+        .container { max-width: 1000px; margin: 80px auto 20px; padding: 20px; }
+        section { margin-bottom: 40px; padding: 20px; background: #f4f4f4; border-radius: 8px; }
+        h1, h2 { color: #2c3e50; margin-bottom: 15px; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 15px; }
+        .skill { background: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .projects { display: grid; gap: 20px; margin-top: 15px; }
+        .project { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .project h3 { color: #3498db; margin-bottom: 10px; }
+        .contact-info { background: white; padding: 20px; border-radius: 5px; margin-top: 15px; }
+        .contact-info p { margin: 10px 0; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 20px 0; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="programs.html">Программы</a></li>
+                <li><a href="#experience">Опыт</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h1>Добро пожаловать в моё портфолио!</h1>
+            <h2>Обо мне</h2>
+            <p>Я Ремонт Сури, профессиональный разработчик с опытом в создании веб-приложений и программного обеспечения. Увлечен современными технологиями и всегда стремлюсь к совершенствованию своих навыков.</p>
+            <p>Специализируюсь на разработке качественных решений, которые решают реальные проблемы пользователей. Моя цель — создавать понятные, эффективные и красивые продукты.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Навыки</h2>
+            <div class="skills-list">
+                <div class="skill">
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                </div>
+                <div class="skill">
+                    <h3>Backend</h3>
+                    <p>Node.js, Python, PHP</p>
+                </div>
+                <div class="skill">
+                    <h3>База данных</h3>
+                    <p>MySQL, MongoDB, PostgreSQL</p>
+                </div>
+                <div class="skill">
+                    <h3>Инструменты</h3>
+                    <p>Git, GitHub, VS Code, Docker</p>
+                </div>
+                <div class="skill">
+                    <h3>Дизайн</h3>
+                    <p>Figma, Adobe Photoshop</p>
+                </div>
+                <div class="skill">
+                    <h3>Другое</h3>
+                    <p>REST API, Responsive Design, SEO</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Проекты</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Проект 1: Веб-приложение</h3>
+                    <p>Разработал полнофункциональное веб-приложение для управления задачами с использованием React и Node.js. Приложение включает аутентификацию пользователей, создание и редактирование задач, систему уведомлений.</p>
+                </div>
+                <div class="project">
+                    <h3>Проект 2: Корпоративный сайт</h3>
+                    <p>Создал современный корпоративный сайт с адаптивным дизайном. Сайт включает страницы о компании, услугах, портфолио и контактную форму. Оптимизирован для SEO.</p>
+                </div>
+                <div class="project">
+                    <h3>Проект 3: Мобильное приложение</h3>
+                    <p>Разработал прогрессивное веб-приложение (PWA) для мобильных устройств. Приложение работает офлайн и может быть установлено на домашний экран.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs">
+            <h2>Программы</h2>
+            <p>Я разработал несколько полезных программ и инструментов:</p>
+            <p><a href="programs.html" style="color: #3498db; font-weight: bold;">Посмотреть все мои программы →</a></p>
+            <p>В разделе программ вы найдете различные утилиты, инструменты и приложения, которые я создал для решения различных задач.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Опыт работы</h2>
+            <div class="project">
+                <h3>Старший разработчик (2022 - настоящее время)</h3>
+                <p>Разработка и поддержка крупных веб-приложений. Руководство командой разработчиков. Внедрение новых технологий и оптимизация процессов разработки.</p>
+            </div>
+            <div class="project">
+                <h3>Разработчик (2020 - 2022)</h3>
+                <p>Создание веб-сайтов и приложений для клиентов. Работа с различными технологиями и фреймворками. Участие в проектировании архитектуры приложений.</p>
+            </div>
+            <div class="project">
+                <h3>Младший разработчик (2018 - 2020)</h3>
+                <p>Начало карьеры в веб-разработке. Изучение современных технологий. Работа над небольшими проектами и исправление ошибок.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> remont.suri@example.com</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/remontsuri" style="color: #3498db;">github.com/remontsuri</a></p>
+                <p><strong>Telegram:</strong> @remontsuri</p>
+                <p><strong>Местоположение:</strong> Россия</p>
+            </div>
+            <p style="margin-top: 20px;">Я всегда открыт для новых проектов и сотрудничества. Свяжитесь со мной, если у вас есть интересное предложение!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ремонт Сури. Все права защищены.</p>
+    </footer>
+</body>
+</html>
