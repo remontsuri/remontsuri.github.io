@@ -1,316 +1,154 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="ru" data-theme>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои Программы | Remont Suri</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --card-bg: #f8f9fa;
-            --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --button-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            --shadow: rgba(0, 0, 0, 0.1);
-            --border-color: #e0e0e0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1a1a1a;
-                --text-color: #e0e0e0;
-                --card-bg: #2d2d2d;
-                --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                --button-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-                --shadow: rgba(255, 255, 255, 0.1);
-                --border-color: #404040;
-            }
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 30px 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.8;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: var(--card-bg);
-            transform: translateX(-5px);
-        }
-
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .program-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 6px var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border-color);
-        }
-
-        .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px var(--shadow);
-        }
-
-        .program-card h2 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .program-card p {
-            margin-bottom: 20px;
-            opacity: 0.85;
-            font-size: 0.95em;
-        }
-
-        .program-button {
-            display: inline-block;
-            width: 100%;
-            padding: 15px 30px;
-            background: var(--button-bg);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .program-button:hover {
-            background: var(--button-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .program-button:active {
-            transform: translateY(0);
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-            background: var(--button-bg);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .programs-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мои программы | remontsuri</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0b10; --fg:#e9ecf1; --muted:#a9b1bd; --card:#141620; --border:#282c34;
+      --primary:#7c5cff; --accent:#00d2ff; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px; --radius-sm:12px; --ring: 0 0 0 3px color-mix(in oklab, var(--primary) 35%, transparent);
+    }
+    @media (prefers-color-scheme: light){:root{--bg:#f7f7fb; --fg:#0b1020; --muted:#4b5563; --card:#ffffff; --border:#e5e7eb; --shadow: 0 10px 30px rgba(0,0,0,.08);}}
+    [data-theme="light"]{ color-scheme: light; } [data-theme="dark"]{ color-scheme: dark; }
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
+    .container{max-width:1100px;margin:auto;padding:24px}
+    header.site{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-block:10px 24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 25%, transparent)}
+    .theme-toggle{appearance:none;border:1px solid var(--border);background:var(--card);color:var(--fg);padding:10px 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:600;box-shadow:var(--shadow)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .hero{grid-column:1/-1;background:linear-gradient(180deg, color-mix(in oklab, var(--primary) 10%, transparent), transparent 60%), var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,40px)} .hero p{margin:8px 0 0;color:var(--muted)}
+    .cards{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);min-height:220px}
+    .badge{font-size:12px;font-weight:700;color:var(--fg);background:color-mix(in oklab, var(--primary) 25%, transparent);border:1px solid color-mix(in oklab, var(--primary) 60%, var(--border));padding:4px 8px;border-radius:999px;width:max-content}
+    .title{font-size:18px;font-weight:700;margin:0}
+    .desc{color:var(--muted);margin:0}
+    .btns{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+    .btn{--bg:linear-gradient(135deg,var(--primary),var(--accent));--txt:#fff;appearance:none;border:none;background:var(--bg);color:var(--txt);padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:var(--shadow);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .btn.secondary{--bg:var(--card);--txt:var(--fg);border:1px solid var(--border)}
+    .btn.ghost{--bg:transparent;--txt:var(--fg);border:1px dashed var(--border)}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:999px}
+    footer{grid-column:1/-1;color:var(--muted);padding:24px 0}
+  </style>
+  <script>
+    const setTheme=(t)=>{document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)};
+    const saved=localStorage.getItem('theme'); if(saved){document.documentElement.setAttribute('data-theme',saved)}
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelector('#themeBtn')?.addEventListener('click',()=>{
+        const cur=document.documentElement.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+        setTheme(cur==='dark'?'light':'dark');
+      });
+    });
+  </script>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Назад на главную</a>
-        
-        <header>
-            <h1>Мои Программы и Проекты</h1>
-            <p class="subtitle">Коллекция проектов, созданных в процессе обучения и экспериментов</p>
-        </header>
+  <div class="container">
+    <header class="site">
+      <div class="brand"><span class="dot"></span><span>remontsuri</span></div>
+      <button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">🌓 Тема</button>
+    </header>
 
-        <div class="programs-grid">
-            <div class="program-card">
-                <h2>🎮 Игра «Змейка»</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">HTML5 Canvas</span>
-                </div>
-                <p>Классическая игра-змейка с современным интерфейсом. Управление стрелками, подсчет очков и плавная анимация.</p>
-                <a href="snake.html" class="program-button">Запустить игру</a>
-            </div>
+    <section class="grid">
+      <div class="hero">
+        <h1>Программы и автоматизации</h1>
+        <p>Инструменты, боты и скрипты. Каждая карточка содержит ссылки на код и описание.</p>
+      </div>
 
-            <div class="program-card">
-                <h2>📝 Текстовый Редактор</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">LocalStorage</span>
-                </div>
-                <p>Простой, но функциональный текстовый редактор с автосохранением и подсветкой синтаксиса для разных языков.</p>
-                <a href="editor.html" class="program-button">Открыть редактор</a>
-            </div>
+      <div class="cards">
+        <article class="card" id="telegram-monetization-bot">
+          <span class="badge">Telegram</span>
+          <h2 class="title">Telegram бот для монетизации</h2>
+          <p class="desc">Платные каналы/подписки, реферальные выплаты, Stripe/крипто, роли, очередь задач и аналитика.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">aiogram</span><span class="tag">Stripe</span><span class="tag">PostgreSQL</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/telegram-monetization" target="_blank" rel="noopener">Код</a>
+            <a class="btn secondary" href="/docs/telegram-monetization" target="_blank" rel="noopener">Описание</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>🎨 Генератор Цветовых Палитр</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">CSS</span>
-                </div>
-                <p>Инструмент для создания красивых цветовых схем. Генерация случайных палитр и экспорт в различных форматах.</p>
-                <a href="color-generator.html" class="program-button">Создать палитру</a>
-            </div>
+        <article class="card" id="cs2-marketplace-automation">
+          <span class="badge">CS2</span>
+          <h2 class="title">CS2 Marketplace Automation</h2>
+          <p class="desc">Автоторговля: лимиты риска, синхронизация инвентаря, бэктесты, Steam API, прокси и антидетект.</p>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">Puppeteer</span><span class="tag">SQLite</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/cs2-market" target="_blank" rel="noopener">Код</a>
+            <a class="btn secondary" href="/docs/cs2-market" target="_blank" rel="noopener">Описание</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>⏱️ Таймер Помодоро</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Web Audio API</span>
-                </div>
-                <p>Помощник для продуктивной работы по методу помодоро. Настраиваемые интервалы и уведомления.</p>
-                <a href="pomodoro.html" class="program-button">Начать фокус</a>
-            </div>
+        <article class="card" id="sih-price-monitor">
+          <span class="badge">Steam</span>
+          <h2 class="title">Бот мониторинга цен (SIH)</h2>
+          <p class="desc">Следит за листингами через SIH, уведомляет о скачках/просадках, шлёт алерты в Telegram, логирует в таблицы.</p>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">SIH</span><span class="tag">Telegram</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/sih-monitor" target="_blank" rel="noopener">Код</a>
+            <a class="btn secondary" href="/docs/sih-monitor" target="_blank" rel="noopener">Описание</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>📊 Калькулятор Расходов</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Chart.js</span>
-                </div>
-                <p>Приложение для учета личных финансов с визуализацией расходов по категориям и статистикой.</p>
-                <a href="expense-tracker.html" class="program-button">Учитывать расходы</a>
-            </div>
+        <article class="card" id="whisper-gpu-transcription">
+          <span class="badge">AI</span>
+          <h2 class="title">Whisper GPU Transcription</h2>
+          <p class="desc">Локальный стэктекст с Whisper + CUDA. Пакетная обработка, VAD, диаризация, экспорт SRT/VTT.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">CUDA</span><span class="tag">Whisper</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/whisper-gpu" target="_blank" rel="noopener">Код</a>
+            <a class="btn secondary" href="/docs/whisper-gpu" target="_blank" rel="noopener">Описание</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>🌤️ Погодное Приложение</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">API</span>
-                </div>
-                <p>Показывает текущую погоду и прогноз на неделю для любого города. Использует OpenWeatherMap API.</p>
-                <a href="weather.html" class="program-button">Узнать погоду</a>
-            </div>
+        <article class="card" id="hackintosh-amd">
+          <span class="badge">Systems</span>
+          <h2 class="title">Hackintosh на AMD</h2>
+          <p class="desc">OpenCore для Ryzen: USB-мэппинг, патчи GPU, сон/аудио, безопасные OTA‑обновления.</p>
+          <div class="tags"><span class="tag">OpenCore</span><span class="tag">Ryzen</span><span class="tag">EFI</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/hackintosh-amd" target="_blank" rel="noopener">EFI / Config</a>
+            <a class="btn secondary" href="/docs/hackintosh-amd" target="_blank" rel="noopener">Гайд</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>✅ ToDo Менеджер</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">LocalStorage</span>
-                </div>
-                <p>Менеджер задач с возможностью создания категорий, установки приоритетов и фильтрации задач.</p>
-                <a href="todo.html" class="program-button">Управлять задачами</a>
-            </div>
+        <article class="card" id="auto-marketing-system">
+          <span class="badge">Automation</span>
+          <h2 class="title">Система автомаркетинга</h2>
+          <p class="desc">Лиды, скоринг, омниканальная рассылка, планировщик, A/B‑эксперименты и отчётность.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">PostgreSQL</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/auto-marketing" target="_blank" rel="noopener">Код</a>
+            <a class="btn secondary" href="/docs/auto-marketing" target="_blank" rel="noopener">Описание</a>
+          </div>
+        </article>
 
-            <div class="program-card">
-                <h2>🎵 Музыкальный Плеер</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">HTML5 Audio</span>
-                </div>
-                <p>Веб-плеер с поддержкой плейлистов, эквалайзером и визуализацией звука в реальном времени.</p>
-                <a href="music-player.html" class="program-button">Слушать музыку</a>
-            </div>
+        <article class="card" id="powershell-scripts">
+          <span class="badge">Windows</span>
+          <h2 class="title">PowerShell Scripts</h2>
+          <p class="desc">Набор утилит: очистка системы, bootstrap пакетов, бэкапы, WSL настройка и hardening.</p>
+          <div class="tags"><span class="tag">PowerShell</span><span class="tag">WinGet</span><span class="tag">WSL</span></div>
+          <div class="btns">
+            <a class="btn" href="/code/powershell" target="_blank" rel="noopener">Скрипты</a>
+            <a class="btn secondary" href="/docs/powershell" target="_blank" rel="noopener">Readme</a>
+          </div>
+        </article>
+      </div>
 
-            <div class="program-card">
-                <h2>🔐 Генератор Паролей</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Crypto</span>
-                </div>
-                <p>Создание надежных паролей с настройкой длины и типов символов. Проверка надежности пароля.</p>
-                <a href="password-generator.html" class="program-button">Сгенерировать пароль</a>
-            </div>
+      <footer>
+        Нужен кастом? <a class="btn ghost" href="/contact" style="padding:6px 10px">Связаться</a>
+      </footer>
+    </section>
+  </div>
 
-            <div class="program-card">
-                <h2>📷 Фото Галерея</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">CSS Grid</span>
-                </div>
-                <p>Адаптивная фото-галерея с лайтбоксом, фильтрами и возможностью загрузки изображений.</p>
-                <a href="gallery.html" class="program-button">Открыть галерею</a>
-            </div>
-
-            <div class="program-card">
-                <h2>🧮 Научный Калькулятор</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Math.js</span>
-                </div>
-                <p>Продвинутый калькулятор с поддержкой тригонометрических, логарифмических и других функций.</p>
-                <a href="calculator.html" class="program-button">Вычислить</a>
-            </div>
-
-            <div class="program-card">
-                <h2>🎯 Игра «Виселица»</h2>
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">SVG</span>
-                </div>
-                <p>Классическая игра в угадывание слов с несколькими категориями и уровнями сложности.</p>
-                <a href="hangman.html" class="program-button">Играть</a>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2025 Remont Suri | Все проекты созданы для обучения и демонстрации навыков</p>
-        </footer>
-    </div>
+  <script>
+    document.querySelectorAll('.btn, .btn.secondary').forEach(b=>{
+      b.addEventListener('focus',()=>{ b.style.boxShadow = 'var(--ring)'; });
+      b.addEventListener('blur',()=>{ b.style.boxShadow = 'var(--shadow)'; });
+    });
+  </script>
 </body>
 </html>
